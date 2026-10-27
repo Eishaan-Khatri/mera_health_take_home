@@ -108,27 +108,39 @@ def to_float(text):
     return float(text.replace(",", ""))
 
 
+def value_span(value):
+    """(low, high) for a plain number ("13.5" -> (13.5, 13.5)) or an interval ("8-10" -> (8, 10)); else None."""
+    if isinstance(value, (int, float)) and not isinstance(value, bool):
+        return float(value), float(value)
+    m = re.fullmatch(rf"({NUMBER})(?:\s*[-–]\s*({NUMBER}))?", str(value or "").strip())
+    if not m:
+        return None  # text like "Negative" or comparators like "< 0.5"
+    return to_float(m.group(1)), to_float(m.group(2) or m.group(1))
+
+
 def compute_status(value, reference_range):
-    """'low' / 'normal' / 'high' from the value and the printed range; None if either isn't numeric."""
-    if isinstance(value, bool) or value is None or reference_range is None:
+    """'low' / 'normal' / 'high' from the value and the printed range. Bounds count as normal.
+    None when there is no numeric value or range, or an interval straddles a bound (4-6 vs 0 - 5)."""
+    span = value_span(value)
+    if span is None or reference_range is None:
         return None
-    if isinstance(value, (int, float)):
-        v = float(value)
-    elif re.fullmatch(NUMBER, str(value).strip()):
-        v = to_float(str(value).strip())
-    else:
-        return None  # text like "Negative", comparators like "< 0.5", intervals like "2-3"
+    vlo, vhi = span
     rng = str(reference_range).strip()
     m = re.match(rf"({NUMBER})\s*[-–]\s*({NUMBER})", rng)
     if m:
         lo, hi = to_float(m.group(1)), to_float(m.group(2))
-        return "low" if v < lo else "high" if v > hi else "normal"
+        return ("low" if vhi < lo else "high" if vlo > hi else
+                "normal" if lo <= vlo and vhi <= hi else None)
     m = re.match(rf"(<=|>=|<|>|≤|≥)\s*({NUMBER})", rng)
     if m:
         op, bound = m.group(1), to_float(m.group(2))
-        if op in ("<", "<=", "≤"):
-            return "high" if (v >= bound if op == "<" else v > bound) else "normal"
-        return "low" if (v <= bound if op == ">" else v < bound) else "normal"
+        if op == "<":
+            return "normal" if vhi < bound else "high" if vlo >= bound else None
+        if op in ("<=", "≤"):
+            return "normal" if vhi <= bound else "high" if vlo > bound else None
+        if op == ">":
+            return "normal" if vlo > bound else "low" if vhi <= bound else None
+        return "normal" if vlo >= bound else "low" if vhi < bound else None
     return None
 
 
