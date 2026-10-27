@@ -16,3 +16,6 @@ venv/
 Thumbs.db
 .vscode/
 .idea/
+
+# Local API call logs used by the eval runner for rate-limit pacing
+runs/.api_calls*.log

@@ -2,7 +2,7 @@
 
 **Setup changes from the kit:**
 - Default model **`gemini-3.1-flash-lite`**, the cheapest priced Gemini (the kit's 3.8 Flash returned 503s). `GEMINI_MODEL` overrides it.
-- Requirements: Poppler and `GEMINI_API_KEY`. Pillow only for `experiments/`.
+- Requirements: Poppler and `GEMINI_API_KEY` (`eval.py run` also reads it from a local `.env`). Pillow only for `experiments/`.
 - On failure, `extract.py` prints `{"tests": [], "error": "..."}` and exits 1.
 
 ```bash
@@ -62,13 +62,13 @@ Eval output: [baseline](runs/baseline/score.md) and [final](runs/fix7_timeouts_e
 
 ## 4. Fixes
 
-| Fix (1–5: one commit and run each; 6 and 7 batched) | Correct | Critical | Fixed / broken |
-|---|---|---|---|
-| 1. Send every page | 83.3% | 12 (page 2 now hits #1) | 16 / 0 |
-| 2. Value as printed | 95.7% | 3 | 17 / 0 |
-| 3. Range as printed or null | **100%** | **0** | 6 / 0 |
-| 4–6. Status from code: numbers, intervals, then word ranges (`review`) | 100% | 0 | bad statuses per run 8 → 0* |
-| 7. Retries in `extract.py`, error JSON, 90 s / 300 s cap | 100% | 0 | — |
+| Fix (1–5: one commit and run each; 6 and 7 batched) | Correct | Critical | Fixed / broken | $ / report · median s |
+|---|---|---|---|---|
+| 1. Send every page | 83.3% | 12 (page 2 now hits #1) | 16 / 0 | $0.00182 · 14.9 |
+| 2. Value as printed | 95.7% | 3 | 17 / 0 | $0.00183 · 34.8 |
+| 3. Range as printed or null | **100%** | **0** | 6 / 0 | $0.00182 · 13.7 |
+| 4–6. Status from code: numbers, intervals, then word ranges (`review`) | 100% | 0 | bad statuses per run 8 → 0* | $0.00153 · 10–13 |
+| 7. Retries in `extract.py`, error JSON, 90 s / 300 s cap | 100% | 0 | — | $0.00153 · 10.8 |
 
 \* Status is checked against the final rule by `experiments/status_check.py`. Fixes 4–5 alone left some rows null, not guessed.
 
@@ -86,11 +86,11 @@ Eval output: [baseline](runs/baseline/score.md) and [final](runs/fix7_timeouts_e
 
 ## 6. Three answers
 
-**RAG: no.** Each report is self-contained. What retrieval would add, "standard" ranges, is what fix 3 removed.
+**Would RAG help? No.** Each report stands on its own: every value comes with its unit and reference range printed on the same page, and nothing in one report should change how another is read. Retrieval would only help if we needed outside reference information. The main thing it would bring in, "standard" reference ranges, is exactly what fix 3 removed, because a doctor would read them as the lab's.
 
-**Fine-tuning: not now.** The baseline errors were prompt and code faults, now fixed. Damaged-image misreads would need far more than 12 reports to train or validate; production corrections could justify it later.
+**Would fine-tuning help? No.** There is no fixed set of report formats to train on: layouts vary as widely as the labs that produce them. Fine-tuning on a narrow subset risks overfitting to those layouts and doing worse on labs it hasn't seen. It would also cost far more than prompting (labelled data, training, and retraining as formats change), while every improvement we needed came from the prompt and code: 71.7% → 100% on the tuning set, and 100% on the held-out set.
 
-**Agent: not earned.** One call plus deterministic code reached 100% at $0.0015 per report. Re-reading abnormal or `review` cells is the only second step worth testing, on the stress set first.
+**Would a multi-step agent help? No.** The task can be done simply and cheaply. One model call plus deterministic code reached 100% on the tuning and held-out sets at $0.0015 per report. More steps or agents would add cost, latency and more places for errors to creep in, with no remaining failure for them to fix.
 
 ## Prompt, scope, limits
 
@@ -107,6 +107,7 @@ Eval output: [baseline](runs/baseline/score.md) and [final](runs/fix7_timeouts_e
 - The stress set is synthetic.
 - Repeats show consistency, not spread.
 - Status isn't scored by the eval (it's checked by `experiments/status_check.py`).
+- report_11 Color and Appearance went missing under one earlier prompt version, so output can be sensitive to prompt wording.
 
 ## How I worked
 
@@ -130,6 +131,7 @@ Eval output: [baseline](runs/baseline/score.md) and [final](runs/fix7_timeouts_e
 9. **Harness fixes:** UTF-8 for `µ` on Windows; slots that failed on 503 were re-run once, with the failure logged.
 10. **Default model set** (`632ef87`) after the held-out run. That run used the same model through `GEMINI_MODEL`.
 11. **Trimmed the eval** (vocabulary moved to JSON) and required tests for it.
+12. **A unit printed in the range cell counts as correct** (report_06): gold moved those units into the unit field, so the eval joins unit and range before comparing. Either placement passes; a different unit still fails.
 
 I also checked by hand every root-cause line, every gold row against its page, and each fix's diff before it ran.
 
