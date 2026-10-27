@@ -23,9 +23,9 @@ Eval output: [baseline](runs/baseline/score.md) and [final](runs/fix7_timeouts_e
 | Final, held-out 04/07/10/12 (28 rows, one shot) | 100% | 0 | $0.00087 | 3.9 s |
 | Final / baseline, 5 degraded copies | 98.6–100% / 68.8–72.5% | 0–2 / 7–10 | | |
 
-**Latency** tracked Google's load: 503s went from 1 to 14–25 per run, while output tokens didn't grow and there were no thinking tokens.
+**Latency** tracked Google's load (503s rose from 1 to 14–25 per run); output tokens didn't grow.
 
-**At 10,000 reports a day:** about $15 at list price, on the paid tier (the free tier allows 500 requests a day).
+**At 10,000 reports a day:** about $15 at list price, on the paid tier (free tier: 500 requests/day).
 
 ## 2. Eval ([`eval.py`](eval.py))
 
@@ -38,11 +38,9 @@ Eval output: [baseline](runs/baseline/score.md) and [final](runs/fix7_timeouts_e
 
 **Not counted:** formatting like `2,29,000`, or a unit printed in the range cell.
 
-**Reported:** correct-row rate and critical errors, with abnormal rows and failed reports separately. Retries are reported apart from accuracy.
+**Reported:** correct-row rate and critical errors, plus abnormal rows, failed reports and retries separately. The eval's own tests break labels one way at a time and check the right counter moves.
 
-**Testing the eval:** its tests break labels one way at a time and check that exactly the right counter moves.
-
-**Labels** ([`labels/NOTES.md`](labels/NOTES.md)): `gold/` is untouched. In `labels/` I corrected one row (report_01 Platelets `304000` → `340000`) and hand-labelled the held-out reports.
+**Labels** ([`labels/NOTES.md`](labels/NOTES.md)): `gold/` untouched; `labels/` has one correction (report_01 Platelets `340000`) and my held-out labels.
 
 **Baseline:** 62.3% with my first eval, and **71.7%** once its name matching was fixed. That fix came before any extractor change.
 
@@ -56,9 +54,7 @@ Eval output: [baseline](runs/baseline/score.md) and [final](runs/fix7_timeouts_e
 
 #3 ranks near the top because it's **silent**: the output looks complete.
 
-**PLAN.md hypotheses:**
-- Held: page 1 only, numeric coercion, invented ranges.
-- Didn't hold: 60 DPI misreads, Indian digit grouping, two-column layouts, "correcting" values that don't add up.
+**PLAN.md hypotheses:** held for page 1 only, numeric coercion and invented ranges; didn't hold for 60 DPI misreads, Indian digit grouping, two-column layouts, or "correcting" values that don't add up.
 
 ## 4. Fixes
 
@@ -70,7 +66,7 @@ Eval output: [baseline](runs/baseline/score.md) and [final](runs/fix7_timeouts_e
 | 4–6. Status from code: numbers, intervals, then word ranges (`review`) | 100% | 0 | bad statuses per run 8 → 0* | $0.00153 · 10–13 |
 | 7. Retries in `extract.py`, error JSON, 90 s / 300 s cap | 100% | 0 | — | $0.00153 · 10.8 |
 
-\* Status is checked against the final rule by `experiments/status_check.py`. Fixes 4–5 alone left some rows null, not guessed.
+\* Against the final rule (`experiments/status_check.py`); fixes 4–5 alone left some rows null, not guessed.
 
 **Ablation:** on the final code, I removed one fix at a time.
 - Pages off: 82.6%.
@@ -78,7 +74,7 @@ Eval output: [baseline](runs/baseline/score.md) and [final](runs/fix7_timeouts_e
 - Range rule off: 97.8% (3 critical).
 - Status off: 100% rows, but 8 bad statuses per run.
 
-**Stress set** ([`experiments/`](experiments)): only digit misreads remain, e.g. report_11 Eosinophils `0` (abnormal) read as `8` from a very low-resolution copy.
+**Stress set** ([`experiments/`](experiments)): only digit misreads remain, e.g. report_11 Eosinophils `0` (abnormal) read as `8` on a very low-resolution copy.
 
 ## 5. What didn't help
 
@@ -86,11 +82,11 @@ Eval output: [baseline](runs/baseline/score.md) and [final](runs/fix7_timeouts_e
 
 ## 6. Three answers
 
-**Would RAG help? No.** Each report stands on its own: every value comes with its unit and reference range printed on the same page, and nothing in one report should change how another is read. Retrieval would only help if we needed outside reference information. The main thing it would bring in, "standard" reference ranges, is exactly what fix 3 removed, because a doctor would read them as the lab's.
+**Would RAG help? No.** Each report is self-contained: values come with their own units and ranges, and no report should change how another is read. Retrieval would only help if we needed outside reference data, and the obvious candidate, "standard" ranges, is what fix 3 removed.
 
-**Would fine-tuning help? No.** There is no fixed set of report formats to train on: layouts vary as widely as the labs that produce them. Fine-tuning on a narrow subset risks overfitting to those layouts and doing worse on labs it hasn't seen. It would also cost far more than prompting (labelled data, training, and retraining as formats change), while every improvement we needed came from the prompt and code: 71.7% → 100% on the tuning set, and 100% on the held-out set.
+**Would fine-tuning help? No.** Layouts vary as widely as the labs that print them, so there's no fixed set to train on, and tuning to a subset risks doing worse on unseen labs. It would also cost far more than prompting, while prompt and code fixes alone took us from 71.7% to 100%.
 
-**Would a multi-step agent help? No.** The task can be done simply and cheaply. One model call plus deterministic code reached 100% on the tuning and held-out sets at $0.0015 per report. More steps or agents would add cost, latency and more places for errors to creep in, with no remaining failure for them to fix.
+**Would a multi-step agent help? No.** One call plus deterministic code already reaches 100% on tuning and held-out at $0.0015 per report. More steps would add cost, latency and places for errors, with no remaining failure to fix.
 
 ## Prompt, scope, limits
 
@@ -98,14 +94,12 @@ Eval output: [baseline](runs/baseline/score.md) and [final](runs/fix7_timeouts_e
 - Values are kept as printed strings, because `Negative`, `< 0.5` and `2-3` carry meaning.
 - Ranges are printed or null, because an invented range is read as the lab's.
 - No status rule: code computes it (bounds count as normal; a word-range mismatch gives `review`).
-- The kit's naming and "thorough" rules are kept but untested.
+- The kit's naming and "thorough" rules are kept, untested.
 
 **Not done:** correcting values that don't add up, unit conversion, sex-specific ranges, frameworks.
 
 **Limits:**
-- The held-out set is only 28 rows, and I'd seen all 12 reports while auditing.
-- The stress set is synthetic.
-- Repeats show consistency, not spread.
+- Held-out is only 28 rows, and I'd seen all 12 reports while auditing. The stress set is synthetic, and repeats show consistency, not spread.
 - Status isn't scored by the eval (it's checked by `experiments/status_check.py`).
 - report_11 Color and Appearance went missing under one earlier prompt version, so output can be sensitive to prompt wording.
 
@@ -126,12 +120,11 @@ Eval output: [baseline](runs/baseline/score.md) and [final](runs/fix7_timeouts_e
 4. **Failure prints error JSON and exits 1:** the agent's first version printed nothing.
 5. **Made the agent check token counts** before blaming "API overload" for the latency.
 6. **Status bounds are inclusive**, even though report_09's lab flags Basophils `2` (range `0 - 2`) as H.
-7. **Kept 60 DPI** (§5).
-8. **Eval fix found by the ablation** (`63a50d2`): `Urine Pus Cells (WBC)` had been mapped to blood WBC. Re-scoring changed nothing else.
-9. **Harness fixes:** UTF-8 for `µ` on Windows; slots that failed on 503 were re-run once, with the failure logged.
-10. **Default model set** (`632ef87`) after the held-out run. That run used the same model through `GEMINI_MODEL`.
-11. **Trimmed the eval** (vocabulary moved to JSON) and required tests for it.
-12. **A unit printed in the range cell counts as correct** (report_06): gold moved those units into the unit field, so the eval joins unit and range before comparing. Either placement passes; a different unit still fails.
+7. **Eval fix found by the ablation** (`63a50d2`): `Urine Pus Cells (WBC)` no longer maps to blood WBC; no other score changed.
+8. **Harness fixes:** UTF-8 for `µ` on Windows; 503-failed slots re-run once, failure logged.
+9. **Default model set** (`632ef87`) after the held-out run, which used the same model via `GEMINI_MODEL`.
+10. **Trimmed the eval** (vocabulary moved to JSON) and required tests for it.
+11. **A unit printed in the range cell counts as correct** (report_06); a different unit still fails.
 
 I also checked by hand every root-cause line, every gold row against its page, and each fix's diff before it ran.
 
