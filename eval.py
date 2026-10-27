@@ -409,10 +409,15 @@ def score_run(run_dir, labels_dir="labels"):
     for a in attempts:
         if a.get("error"):
             errors[a["error"]] = errors.get(a["error"], 0) + 1
+    inner = {}
+    for a in attempts:
+        for reason in a.get("extractor_retries", []):
+            inner[reason] = inner.get(reason, 0) + 1
     lines += ["", "## Reliability (separate from accuracy)", "",
-              f"- Report runs: {len(metas)} | API attempts: {len(attempts)} | retries: {len(attempts) - len(metas)} "
-              f"| failed report runs: {sum(1 for m in metas if m.get('status') != 'ok')}",
-              f"- Errors by type: {errors or 'none'}"]
+              f"- Report runs: {len(metas)} | runner attempts: {len(attempts)} | runner retries: "
+              f"{len(attempts) - len(metas)} | failed report runs: {sum(1 for m in metas if m.get('status') != 'ok')}",
+              f"- Errors seen by the runner: {errors or 'none'}",
+              f"- Retries inside the extractor: {sum(inner.values())} {inner or ''}"]
 
     known = [c for c in (cost_of(m.get("usage")) for m in metas) if c is not None]
     walls = [m["wall_s"] for m in metas if m.get("status") == "ok" and m.get("wall_s") is not None]
@@ -493,6 +498,18 @@ def parse_usage(stderr):
     return None
 
 
+def parse_retries(stderr):
+    """Retries the extractor did itself ('RETRY {...}' lines on stderr), so they still show in reliability."""
+    out = []
+    for line in stderr.splitlines():
+        if line.startswith("RETRY "):
+            try:
+                out.append(json.loads(line[6:]).get("reason", "unknown"))
+            except ValueError:
+                out.append("unknown")
+    return out
+
+
 class Pacer:
     """Keeps our request counts under free-tier limits, using a ledger shared across runs.
     Tokens-per-minute isn't paced: one call is ~2k tokens, far under any TPM limit at our RPM."""
@@ -540,7 +557,8 @@ def run_one(extractor, report, env, timeout, backoff, pacer):
         except subprocess.TimeoutExpired:
             out, err, code = "", f"runner timeout after {timeout}s", None
         att = {"n": n + 1, "wall_s": round(time.time() - t, 2), "exit": code,
-               "error": "timeout" if code is None else classify(err) if code else None}
+               "error": "timeout" if code is None else classify(err) if code else None,
+               "extractor_retries": parse_retries(err)}
         if att["error"] is None:
             try:
                 json.loads(out)

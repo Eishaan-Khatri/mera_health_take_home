@@ -447,6 +447,11 @@ FAKE = textwrap.dedent("""
         print(json.dumps({"tests": [{"test_name": "T4", "value": "10.9", "unit": "\u00b5g/dL",
                                      "reference_range": None}]}, ensure_ascii=False))
         sys.exit(0)
+    if mode == "inner_retries":
+        print('RETRY {"attempt": 1, "reason": "http_503", "wait_s": 5}', file=sys.stderr)
+        print('RETRY {"attempt": 2, "reason": "timeout", "wait_s": 15}', file=sys.stderr)
+        print(json.dumps({"tests": []}))
+        sys.exit(0)
     if mode == "always_429":
         sys.exit("Gemini HTTP 429; check API access, model and quota.")
     print('USAGE {"model": "gemini-3.1-flash-lite", "prompt_tokens": 1000, "output_tokens": 200, '
@@ -484,6 +489,11 @@ class Runner(unittest.TestCase):
 
     def test_run_sets_utf8_for_the_extractor(self):
         self.assertIn('env["PYTHONIOENCODING"] = "utf-8"', Path(ev.__file__).read_text(encoding="utf-8"))
+
+    def test_extractor_retries_are_recorded(self):
+        _, meta = self.go("inner_retries")
+        self.assertEqual(meta["status"], "ok")
+        self.assertEqual(meta["attempts"][0]["extractor_retries"], ["http_503", "timeout"])
 
     def test_usage_and_cost(self):
         _, meta = self.go("ok")
