@@ -1,0 +1,30 @@
+{
+ "report": "report_01.pdf",
+ "model": "gemini-3.1-flash-lite",
+ "attempts": [
+  {
+   "n": 1,
+   "wall_s": 20.49,
+   "exit": 0,
+   "error": null,
+   "extractor_retries": [
+    "http_503"
+   ]
+  }
+ ],
+ "status": "ok",
+ "usage": {
+  "model": "gemini-3.1-flash-lite",
+  "prompt_tokens": 1223,
+  "output_tokens": 788,
+  "thinking_tokens": null,
+  "total_tokens": 2011
+ },
+ "wall_s": 20.49,
+ "total_wall_s": 20.5,
+ "counts_after": {
+  "minute": 2,
+  "hour": 90,
+  "day": 357
+ }
+}
