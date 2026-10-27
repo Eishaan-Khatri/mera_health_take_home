@@ -14,7 +14,7 @@ Held-out set for reports without gold (04, 07, 10, 12). Same format as `gold/`. 
 - Rows are listed in reading order: left table, then right table, within each section.
 - When a report prints the unit inside the range cell (`80 - 200 ng/dL`), the unit goes in `unit` and the range keeps only `80 - 200`. This is the same split `gold/report_06.json` uses.
 - `unit` is `null` when none is printed (ratios). `reference_range` is `null` when none is printed.
-- No cell is left ambiguous. The one partly covered cell (report_07 Serum Globulin) was settled by the author; see below.
+- Ambiguous cells keep their best reading in `value` and list every acceptable output in `"accept_values"` (the schema allows extra fields). Any other value is wrong. Only one row uses it: report_07 Serum Globulin, `value: "3.1"`, `accept_values: ["3.1", null]`. A covered digit means `null` is an honest answer, so it isn't penalised (author decision).
 
 | Report | Source | How it was checked | Rows | Notes |
 |---|---|---|---|---|

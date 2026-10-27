@@ -52,7 +52,11 @@
       "test_name": "Serum Globulin",
       "value": "3.1",
       "unit": "g/dL",
-      "reference_range": "2.0 - 3.5"
+      "reference_range": "2.0 - 3.5",
+      "accept_values": [
+        "3.1",
+        null
+      ]
     },
     {
       "test_name": "Albumin/Globulin Ratio",

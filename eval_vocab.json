@@ -1,0 +1,427 @@
+{
+ "_about": "Vocabulary for eval.py. synonyms: canonical name -> printed variants (matched after clean_name). unit_buckets: spellings in the same bucket are the same unit; different buckets are a wrong unit; spellings in no bucket are flagged for review. Grow this from what the eval flags.",
+ "_notes": [
+  "Bare 'leucocytes', 'erythrocytes' and 'rbc' as a result row are read as urine microscopy (/hpf), because blood counts are printed with 'count'. Ambiguous by design; revisit if a report breaks it.",
+  "'lakh/cumm' is its own bucket: it is a scale change from '/cumm', never the same unit.",
+  "mEq/L == mmol/L only for sodium, potassium and chloride; that rule lives in eval.py (ELECTROLYTES)."
+ ],
+ "synonyms": {
+  "hemoglobin": [
+   "haemoglobin",
+   "hemoglobin (hb)",
+   "hb",
+   "hgb"
+  ],
+  "rbc_count": [
+   "total rbc count",
+   "rbc count",
+   "red blood cell count",
+   "total red blood cell count",
+   "erythrocyte count",
+   "red cell count"
+  ],
+  "hematocrit": [
+   "packed cell volume (pcv)",
+   "pcv",
+   "hct",
+   "packed cell volume"
+  ],
+  "mcv": [
+   "mean corpuscular volume",
+   "mean cell volume"
+  ],
+  "mch": [
+   "mean corpuscular hb",
+   "mean corpuscular hemoglobin",
+   "mean cell hemoglobin"
+  ],
+  "mchc": [
+   "mean corp. hb conc.",
+   "mean corpuscular hemoglobin concentration",
+   "mean corpuscular hb concentration",
+   "mean cell hemoglobin concentration"
+  ],
+  "rdw": [
+   "rdw-cv",
+   "rdw cv",
+   "red cell distribution width",
+   "red cell distribution width (rdw-cv)"
+  ],
+  "wbc": [
+   "total wbc count",
+   "total leucocyte count",
+   "total leukocyte count",
+   "wbc count",
+   "tlc",
+   "white blood cell count",
+   "total white blood cell count",
+   "total count (tc)"
+  ],
+  "neutrophils": [
+   "neutrophil",
+   "polymorphs",
+   "neutrophils (polymorphs)"
+  ],
+  "lymphocytes": [
+   "lymphocyte"
+  ],
+  "eosinophils": [
+   "eosinophil"
+  ],
+  "monocytes": [
+   "monocyte"
+  ],
+  "basophils": [
+   "basophil"
+  ],
+  "platelets": [
+   "platelet count",
+   "plt",
+   "platelet",
+   "platelet count (plt)"
+  ],
+  "total_cholesterol": [
+   "cholesterol - total",
+   "cholesterol total",
+   "total cholesterol",
+   "s. cholesterol",
+   "cholesterol"
+  ],
+  "triglycerides": [
+   "serum triglycerides",
+   "tg",
+   "triglyceride"
+  ],
+  "hdl": [
+   "cholesterol - hdl",
+   "hdl cholesterol",
+   "hdl-c",
+   "hdl-cholesterol"
+  ],
+  "ldl": [
+   "cholesterol - ldl",
+   "ldl cholesterol",
+   "ldl-c",
+   "ldl-c (direct)",
+   "ldl direct",
+   "ldl-cholesterol"
+  ],
+  "vldl": [
+   "cholesterol - vldl",
+   "vldl cholesterol",
+   "vldl-c"
+  ],
+  "tc_hdl_ratio": [
+   "tc/hdl ratio",
+   "chol/hdl",
+   "total cholesterol/hdl ratio",
+   "cholesterol/hdl ratio",
+   "tc/hdl",
+   "chol/hdl ratio"
+  ],
+  "bilirubin_total": [
+   "total bilirubin",
+   "bilirubin total",
+   "bilirubin - total"
+  ],
+  "bilirubin_direct": [
+   "direct bilirubin",
+   "bilirubin direct",
+   "bilirubin - direct",
+   "conjugated bilirubin"
+  ],
+  "bilirubin_indirect": [
+   "indirect bilirubin",
+   "bilirubin indirect",
+   "bilirubin - indirect",
+   "unconjugated bilirubin"
+  ],
+  "ast": [
+   "aspartate aminotransferase",
+   "sgot",
+   "ast (sgot)",
+   "sgot (ast)"
+  ],
+  "alt": [
+   "alanine aminotransferase",
+   "sgpt",
+   "alt (sgpt)",
+   "sgpt (alt)"
+  ],
+  "alp": [
+   "alkaline phosphatase"
+  ],
+  "total_protein": [
+   "protein total",
+   "total protein",
+   "proteins total",
+   "total proteins"
+  ],
+  "albumin": [
+   "serum albumin"
+  ],
+  "globulin": [
+   "serum globulin"
+  ],
+  "ag_ratio": [
+   "albumin/globulin ratio",
+   "a/g ratio",
+   "ag ratio",
+   "albumin globulin ratio"
+  ],
+  "urea": [
+   "blood urea",
+   "s. urea"
+  ],
+  "creatinine": [
+   "s. creatinine",
+   "serum creatinine"
+  ],
+  "uric_acid": [
+   "serum uric acid",
+   "uric acid"
+  ],
+  "sodium": [
+   "sodium (na+)",
+   "na",
+   "na+",
+   "s. sodium"
+  ],
+  "potassium": [
+   "potassium (k+)",
+   "k",
+   "k+",
+   "s. potassium"
+  ],
+  "chloride": [
+   "chloride (cl-)",
+   "cl",
+   "cl-",
+   "s. chloride"
+  ],
+  "t3": [
+   "triiodothyronine",
+   "triiodothyronine (t3)",
+   "total t3"
+  ],
+  "t4": [
+   "thyroxine",
+   "thyroxine (t4)",
+   "total t4"
+  ],
+  "tsh": [
+   "tsh (ultrasensitive)",
+   "thyroid stimulating hormone",
+   "ultrasensitive tsh",
+   "thyroid stimulating hormone (tsh)"
+  ],
+  "hba1c": [
+   "glycated hb",
+   "glycated hemoglobin",
+   "glycosylated haemoglobin (hba1c)",
+   "glycosylated hemoglobin",
+   "glycated haemoglobin (hba1c)",
+   "hba1c (glycated hemoglobin)"
+  ],
+  "glucose_fasting": [
+   "fbs",
+   "glucose - fasting",
+   "fasting blood sugar",
+   "fasting glucose",
+   "fasting plasma glucose",
+   "glucose fasting",
+   "blood sugar fasting"
+  ],
+  "glucose_pp": [
+   "ppbs",
+   "glucose - pp",
+   "post prandial blood sugar",
+   "postprandial blood sugar",
+   "glucose pp",
+   "glucose post prandial",
+   "postprandial glucose",
+   "blood sugar pp"
+  ],
+  "vitamin_d": [
+   "vit d total",
+   "25-hydroxy vitamin d",
+   "vitamin d",
+   "vitamin d total",
+   "25(oh) vitamin d",
+   "25 oh vitamin d",
+   "vitamin d (25-oh)"
+  ],
+  "vitamin_b12": [
+   "vit b12",
+   "cyanocobalamin (b12)",
+   "cyanocobalamin",
+   "vitamin b12 (cyanocobalamin)"
+  ],
+  "crp": [
+   "c-reactive protein",
+   "c reactive protein"
+  ],
+  "esr": [
+   "e.s.r. (westergren)",
+   "erythrocyte sedimentation rate",
+   "esr (westergren)"
+  ],
+  "urine_color": [
+   "colour",
+   "color"
+  ],
+  "urine_appearance": [
+   "clarity",
+   "appearance"
+  ],
+  "urine_ph": [
+   "ph",
+   "reaction (ph)",
+   "reaction"
+  ],
+  "specific_gravity": [
+   "sp. gravity",
+   "sp gravity"
+  ],
+  "urine_protein": [
+   "urine protein",
+   "urine albumin",
+   "protein (urine)"
+  ],
+  "urine_glucose": [
+   "urine glucose",
+   "sugar",
+   "urine sugar"
+  ],
+  "ketones": [
+   "ketone bodies",
+   "urine ketones",
+   "ketone"
+  ],
+  "urine_wbc": [
+   "pus cells (wbc)",
+   "pus cells",
+   "leucocytes",
+   "leukocytes",
+   "wbc (urine)",
+   "urine wbc"
+  ],
+  "urine_rbc": [
+   "rbc",
+   "erythrocytes",
+   "rbc (urine)",
+   "urine rbc",
+   "red blood cells"
+  ],
+  "epithelial_cells": [
+   "squamous epithelial cells",
+   "epithelial cell"
+  ]
+ },
+ "unit_buckets": {
+  "per_ul": [
+   "/cumm",
+   "/cmm",
+   "/mm3",
+   "/µl",
+   "cells/µl",
+   "cells/cumm",
+   "/cu mm"
+  ],
+  "million_ul": [
+   "mill/cumm",
+   "million/cumm",
+   "millions/cumm",
+   "million/µl",
+   "mill/µl",
+   "10^6/µl",
+   "x10^6/µl",
+   "m/µl",
+   "10^6/cumm",
+   "10^12/l"
+  ],
+  "thousand_ul": [
+   "10^3/µl",
+   "x10^3/µl",
+   "thou/µl",
+   "k/µl",
+   "thousand/cumm",
+   "10^3/cumm",
+   "10^9/l"
+  ],
+  "lakh_ul": [
+   "lakh/cumm",
+   "lakhs/cumm",
+   "lakh/µl",
+   "lakhs/µl"
+  ],
+  "g_dl": [
+   "g/dl",
+   "gm/dl",
+   "gm%",
+   "g%",
+   "gms/dl"
+  ],
+  "mg_dl": [
+   "mg/dl",
+   "mg%"
+  ],
+  "mg_l": [
+   "mg/l"
+  ],
+  "ng_dl": [
+   "ng/dl"
+  ],
+  "ng_ml": [
+   "ng/ml"
+  ],
+  "pg_ml": [
+   "pg/ml"
+  ],
+  "ug_dl": [
+   "µg/dl"
+  ],
+  "uiu_ml": [
+   "µiu/ml",
+   "miu/l",
+   "µu/ml"
+  ],
+  "u_l": [
+   "u/l",
+   "iu/l"
+  ],
+  "mmol_l": [
+   "mmol/l"
+  ],
+  "meq_l": [
+   "meq/l"
+  ],
+  "fl": [
+   "fl",
+   "femtolitre",
+   "femtoliter",
+   "cu micron"
+  ],
+  "pg": [
+   "pg",
+   "picogram",
+   "picograms"
+  ],
+  "percent": [
+   "%"
+  ],
+  "hpf": [
+   "/hpf",
+   "cells/hpf",
+   "per hpf"
+  ],
+  "mm_hr": [
+   "mm/hr",
+   "mm/1sthr",
+   "mm/1st hour",
+   "mm in 1st hour",
+   "mm/h",
+   "mm/hour"
+  ]
+ }
+}
