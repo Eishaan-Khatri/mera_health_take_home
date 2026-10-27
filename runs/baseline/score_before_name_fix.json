@@ -1,0 +1,3958 @@
+{
+ "labels": "labels",
+ "git_commit": "2c6da63e5dd1fd7d872fb5ab8a4e5e35ed39e7a6",
+ "eval_files_uncommitted": true,
+ "vocab_sha256": "4d0aa4b375954eea3663b3fd11cdccdaa7c163de834aabbe5e2c4792f1392383",
+ "repeats": [
+  {
+   "01": {
+    "rows": 14,
+    "correct": 11,
+    "critical": 3,
+    "wrong_value": 0,
+    "wrong_unit": 0,
+    "wrong_range": 0,
+    "invented_range": 0,
+    "invented_row": 3,
+    "unpaired": 3,
+    "duplicate": 0,
+    "miss_rows": 3,
+    "dropped_row": 3,
+    "null_value": 0,
+    "missing_unit": 0,
+    "missing_range": 0,
+    "review": 0,
+    "out_of_order": 0,
+    "abnormal_rows": 3,
+    "abnormal_critical": 0,
+    "failed": null,
+    "details": [
+     {
+      "label": {
+       "test_name": "MCV",
+       "value": "77.9",
+       "unit": "fL",
+       "reference_range": "83.0 - 101.0"
+      },
+      "issues": [
+       "dropped_row"
+      ],
+      "status": "miss"
+     },
+     {
+      "label": {
+       "test_name": "MCH",
+       "value": "27.9",
+       "unit": "pg",
+       "reference_range": "27.0 - 32.0"
+      },
+      "issues": [
+       "dropped_row"
+      ],
+      "status": "miss"
+     },
+     {
+      "label": {
+       "test_name": "MCHC",
+       "value": "34.2",
+       "unit": "g/dL",
+       "reference_range": "31.5 - 34.5"
+      },
+      "issues": [
+       "dropped_row"
+      ],
+      "status": "miss"
+     },
+     {
+      "pred": {
+       "test_name": "Mean Corpuscular Volume (MCV)",
+       "value": 77.9,
+       "unit": "fL",
+       "reference_range": "83.0 - 101.0",
+       "status": "low"
+      },
+      "issues": [
+       "invented_row"
+      ],
+      "status": "critical",
+      "note": "unpaired"
+     },
+     {
+      "pred": {
+       "test_name": "Mean Corpuscular Haemoglobin (MCH)",
+       "value": 27.9,
+       "unit": "pg",
+       "reference_range": "27.0 - 32.0",
+       "status": "normal"
+      },
+      "issues": [
+       "invented_row"
+      ],
+      "status": "critical",
+      "note": "unpaired"
+     },
+     {
+      "pred": {
+       "test_name": "Mean Corpuscular Haemoglobin Concentration (MCHC)",
+       "value": 34.2,
+       "unit": "g/dL",
+       "reference_range": "31.5 - 34.5",
+       "status": "normal"
+      },
+      "issues": [
+       "invented_row"
+      ],
+      "status": "critical",
+      "note": "unpaired"
+     }
+    ],
+    "row_status": [
+     "correct",
+     "correct",
+     "correct",
+     "miss",
+     "miss",
+     "miss",
+     "correct",
+     "correct",
+     "correct",
+     "correct",
+     "correct",
+     "correct",
+     "correct",
+     "correct"
+    ]
+   },
+   "02": {
+    "rows": 16,
+    "correct": 13,
+    "critical": 1,
+    "wrong_value": 0,
+    "wrong_unit": 0,
+    "wrong_range": 0,
+    "invented_range": 0,
+    "invented_row": 1,
+    "unpaired": 1,
+    "duplicate": 0,
+    "miss_rows": 1,
+    "dropped_row": 1,
+    "null_value": 0,
+    "missing_unit": 0,
+    "missing_range": 0,
+    "review": 2,
+    "out_of_order": 0,
+    "abnormal_rows": 6,
+    "abnormal_critical": 0,
+    "failed": null,
+    "details": [
+     {
+      "label": {
+       "test_name": "Aspartate Aminotransferase",
+       "value": "50",
+       "unit": "U/L",
+       "reference_range": "5 - 40"
+      },
+      "pred": {
+       "test_name": "Aspartate Aminotransferase (AST)",
+       "value": 50.0,
+       "unit": "U/L",
+       "reference_range": "5 - 40",
+       "status": "high"
+      },
+      "pairing": "fuzzy",
+      "issues": [
+       "review_fuzzy"
+      ],
+      "status": "review"
+     },
+     {
+      "label": {
+       "test_name": "Alanine Aminotransferase",
+       "value": "2",
+       "unit": "U/L",
+       "reference_range": "5 - 45"
+      },
+      "pred": {
+       "test_name": "Alanine Aminotransferase (ALT)",
+       "value": 2.0,
+       "unit": "U/L",
+       "reference_range": "5 - 45",
+       "status": "low"
+      },
+      "pairing": "fuzzy",
+      "issues": [
+       "review_fuzzy"
+      ],
+      "status": "review"
+     },
+     {
+      "label": {
+       "test_name": "ALP",
+       "value": "118",
+       "unit": "U/L",
+       "reference_range": "40 - 129"
+      },
+      "issues": [
+       "dropped_row"
+      ],
+      "status": "miss"
+     },
+     {
+      "pred": {
+       "test_name": "Alkaline Phosphatase (ALP)",
+       "value": 118.0,
+       "unit": "U/L",
+       "reference_range": "40 - 129",
+       "status": "normal"
+      },
+      "issues": [
+       "invented_row"
+      ],
+      "status": "critical",
+      "note": "unpaired"
+     }
+    ],
+    "row_status": [
+     "correct",
+     "correct",
+     "correct",
+     "correct",
+     "correct",
+     "correct",
+     "correct",
+     "correct",
+     "correct",
+     "review",
+     "review",
+     "miss",
+     "correct",
+     "correct",
+     "correct",
+     "correct"
+    ]
+   },
+   "03": {
+    "rows": 8,
+    "correct": 3,
+    "critical": 5,
+    "wrong_value": 0,
+    "wrong_unit": 0,
+    "wrong_range": 0,
+    "invented_range": 3,
+    "invented_row": 2,
+    "unpaired": 2,
+    "duplicate": 0,
+    "miss_rows": 2,
+    "dropped_row": 2,
+    "null_value": 0,
+    "missing_unit": 0,
+    "missing_range": 0,
+    "review": 0,
+    "out_of_order": 0,
+    "abnormal_rows": 0,
+    "abnormal_critical": 0,
+    "failed": null,
+    "details": [
+     {
+      "label": {
+       "test_name": "T3",
+       "value": "179",
+       "unit": "ng/dL",
+       "reference_range": null
+      },
+      "pred": {
+       "test_name": "Triiodothyronine (T3)",
+       "value": 179.0,
+       "unit": "ng/dL",
+       "reference_range": "80 - 200",
+       "status": "normal"
+      },
+      "pairing": "exact",
+      "issues": [
+       "invented_range"
+      ],
+      "status": "critical"
+     },
+     {
+      "label": {
+       "test_name": "T4",
+       "value": "10.9",
+       "unit": "µg/dL",
+       "reference_range": null
+      },
+      "pred": {
+       "test_name": "Thyroxine (T4)",
+       "value": 10.9,
+       "unit": "µg/dL",
+       "reference_range": "5.0 - 12.0",
+       "status": "normal"
+      },
+      "pairing": "exact",
+      "issues": [
+       "invented_range"
+      ],
+      "status": "critical"
+     },
+     {
+      "label": {
+       "test_name": "Glycated Hb",
+       "value": "6.0",
+       "unit": "%",
+       "reference_range": null
+      },
+      "pred": {
+       "test_name": "Glycated Hemoglobin (HbA1c)",
+       "value": 6.0,
+       "unit": "%",
+       "reference_range": "4.0 - 5.6",
+       "status": "high"
+      },
+      "pairing": "exact",
+      "issues": [
+       "invented_range"
+      ],
+      "status": "critical"
+     },
+     {
+      "label": {
+       "test_name": "FBS",
+       "value": "88",
+       "unit": "mg/dL",
+       "reference_range": "70 - 100"
+      },
+      "issues": [
+       "dropped_row"
+      ],
+      "status": "miss"
+     },
+     {
+      "label": {
+       "test_name": "PPBS",
+       "value": "95",
+       "unit": "mg/dL",
+       "reference_range": "70 - 140"
+      },
+      "issues": [
+       "dropped_row"
+      ],
+      "status": "miss"
+     },
+     {
+      "pred": {
+       "test_name": "Fasting Blood Sugar (FBS)",
+       "value": 88.0,
+       "unit": "mg/dL",
+       "reference_range": "70 - 100",
+       "status": "normal"
+      },
+      "issues": [
+       "invented_row"
+      ],
+      "status": "critical",
+      "note": "unpaired"
+     },
+     {
+      "pred": {
+       "test_name": "Postprandial Blood Sugar (PPBS)",
+       "value": 95.0,
+       "unit": "mg/dL",
+       "reference_range": "70 - 140",
+       "status": "normal"
+      },
+      "issues": [
+       "invented_row"
+      ],
+      "status": "critical",
+      "note": "unpaired"
+     }
+    ],
+    "row_status": [
+     "critical",
+     "critical",
+     "correct",
+     "correct",
+     "correct",
+     "critical",
+     "miss",
+     "miss"
+    ]
+   },
+   "05": {
+    "rows": 14,
+    "correct": 11,
+    "critical": 3,
+    "wrong_value": 0,
+    "wrong_unit": 0,
+    "wrong_range": 0,
+    "invented_range": 0,
+    "invented_row": 3,
+    "unpaired": 3,
+    "duplicate": 0,
+    "miss_rows": 3,
+    "dropped_row": 3,
+    "null_value": 0,
+    "missing_unit": 0,
+    "missing_range": 0,
+    "review": 0,
+    "out_of_order": 0,
+    "abnormal_rows": 5,
+    "abnormal_critical": 0,
+    "failed": null,
+    "details": [
+     {
+      "label": {
+       "test_name": "MCV",
+       "value": "94.9",
+       "unit": "fL",
+       "reference_range": "83.0 - 101.0"
+      },
+      "issues": [
+       "dropped_row"
+      ],
+      "status": "miss"
+     },
+     {
+      "label": {
+       "test_name": "MCH",
+       "value": "28.3",
+       "unit": "pg",
+       "reference_range": "27.0 - 32.0"
+      },
+      "issues": [
+       "dropped_row"
+      ],
+      "status": "miss"
+     },
+     {
+      "label": {
+       "test_name": "MCHC",
+       "value": "33.5",
+       "unit": "g/dL",
+       "reference_range": "31.5 - 34.5"
+      },
+      "issues": [
+       "dropped_row"
+      ],
+      "status": "miss"
+     },
+     {
+      "pred": {
+       "test_name": "Mean Corpuscular Volume (MCV)",
+       "value": 94.9,
+       "unit": "fL",
+       "reference_range": "83.0 - 101.0",
+       "status": "normal"
+      },
+      "issues": [
+       "invented_row"
+      ],
+      "status": "critical",
+      "note": "unpaired"
+     },
+     {
+      "pred": {
+       "test_name": "Mean Corpuscular Haemoglobin (MCH)",
+       "value": 28.3,
+       "unit": "pg",
+       "reference_range": "27.0 - 32.0",
+       "status": "normal"
+      },
+      "issues": [
+       "invented_row"
+      ],
+      "status": "critical",
+      "note": "unpaired"
+     },
+     {
+      "pred": {
+       "test_name": "Mean Corpuscular Haemoglobin Concentration (MCHC)",
+       "value": 33.5,
+       "unit": "g/dL",
+       "reference_range": "31.5 - 34.5",
+       "status": "normal"
+      },
+      "issues": [
+       "invented_row"
+      ],
+      "status": "critical",
+      "note": "unpaired"
+     }
+    ],
+    "row_status": [
+     "correct",
+     "correct",
+     "correct",
+     "miss",
+     "miss",
+     "miss",
+     "correct",
+     "correct",
+     "correct",
+     "correct",
+     "correct",
+     "correct",
+     "correct",
+     "correct"
+    ]
+   },
+   "06": {
+    "rows": 12,
+    "correct": 0,
+    "critical": 7,
+    "wrong_value": 2,
+    "wrong_unit": 0,
+    "wrong_range": 0,
+    "invented_range": 0,
+    "invented_row": 5,
+    "unpaired": 5,
+    "duplicate": 0,
+    "miss_rows": 5,
+    "dropped_row": 5,
+    "null_value": 1,
+    "missing_unit": 0,
+    "missing_range": 0,
+    "review": 5,
+    "out_of_order": 0,
+    "abnormal_rows": 3,
+    "abnormal_critical": 1,
+    "failed": null,
+    "details": [
+     {
+      "label": {
+       "test_name": "Colour",
+       "value": "Dark Yellow",
+       "unit": null,
+       "reference_range": "Pale Yellow"
+      },
+      "pred": {
+       "test_name": "Urine Colour",
+       "value": null,
+       "unit": "N/A",
+       "reference_range": "Pale Yellow",
+       "status": "abnormal"
+      },
+      "pairing": "exact",
+      "issues": [
+       "null_value",
+       "review_unit_added"
+      ],
+      "status": "review"
+     },
+     {
+      "label": {
+       "test_name": "pH",
+       "value": "6.5",
+       "unit": null,
+       "reference_range": "5.0 - 8.0"
+      },
+      "pred": {
+       "test_name": "Urine pH",
+       "value": 6.5,
+       "unit": "pH",
+       "reference_range": "5.0 - 8.0",
+       "status": "normal"
+      },
+      "pairing": "exact",
+      "issues": [
+       "review_unit_added"
+      ],
+      "status": "review"
+     },
+     {
+      "label": {
+       "test_name": "Specific Gravity",
+       "value": "1.020",
+       "unit": null,
+       "reference_range": "1.005 - 1.030"
+      },
+      "pred": {
+       "test_name": "Urine Specific Gravity",
+       "value": 1.02,
+       "unit": "g/mL",
+       "reference_range": "1.005 - 1.030",
+       "status": "normal"
+      },
+      "pairing": "fuzzy",
+      "issues": [
+       "review_fuzzy",
+       "review_unit_added"
+      ],
+      "status": "review"
+     },
+     {
+      "label": {
+       "test_name": "Sugar",
+       "value": "Present (+)",
+       "unit": null,
+       "reference_range": "Negative"
+      },
+      "pred": {
+       "test_name": "Urine Sugar",
+       "value": 1.0,
+       "unit": "N/A",
+       "reference_range": "Negative",
+       "status": "high"
+      },
+      "pairing": "exact",
+      "issues": [
+       "wrong_value",
+       "review_unit_added"
+      ],
+      "status": "critical"
+     },
+     {
+      "label": {
+       "test_name": "Ketones",
+       "value": "Negative",
+       "unit": null,
+       "reference_range": "Negative"
+      },
+      "pred": {
+       "test_name": "Urine Ketones",
+       "value": 0.0,
+       "unit": "N/A",
+       "reference_range": "Negative",
+       "status": "normal"
+      },
+      "pairing": "exact",
+      "issues": [
+       "wrong_value",
+       "review_unit_added"
+      ],
+      "status": "critical"
+     },
+     {
+      "label": {
+       "test_name": "Erythrocytes",
+       "value": "1-2",
+       "unit": "/hpf",
+       "reference_range": "Nil"
+      },
+      "pred": {
+       "test_name": "Urine Erythrocytes",
+       "value": 1.5,
+       "unit": "/hpf",
+       "reference_range": "0 - 0 /hpf",
+       "status": "high"
+      },
+      "pairing": "fuzzy",
+      "issues": [
+       "review_fuzzy",
+       "wrong_value",
+       "review_range_format"
+      ],
+      "status": "review"
+     },
+     {
+      "label": {
+       "test_name": "Squamous Epithelial Cells",
+       "value": "1-2",
+       "unit": "/hpf",
+       "reference_range": "0 - 5"
+      },
+      "pred": {
+       "test_name": "Urine Squamous Epithelial Cells",
+       "value": 1.5,
+       "unit": "/hpf",
+       "reference_range": "0 - 5 /hpf",
+       "status": "normal"
+      },
+      "pairing": "fuzzy",
+      "issues": [
+       "review_fuzzy",
+       "wrong_value"
+      ],
+      "status": "review"
+     },
+     {
+      "label": {
+       "test_name": "Clarity",
+       "value": "Clear",
+       "unit": null,
+       "reference_range": "Clear"
+      },
+      "issues": [
+       "dropped_row"
+      ],
+      "status": "miss"
+     },
+     {
+      "label": {
+       "test_name": "Albumin",
+       "value": "Negative",
+       "unit": null,
+       "reference_range": "Negative"
+      },
+      "issues": [
+       "dropped_row"
+      ],
+      "status": "miss"
+     },
+     {
+      "label": {
+       "test_name": "Leucocytes",
+       "value": "2-3",
+       "unit": "/hpf",
+       "reference_range": "0 - 5"
+      },
+      "issues": [
+       "dropped_row"
+      ],
+      "status": "miss"
+     },
+     {
+      "label": {
+       "test_name": "CRP",
+       "value": "< 0.5",
+       "unit": "mg/L",
+       "reference_range": "< 5.0"
+      },
+      "issues": [
+       "dropped_row"
+      ],
+      "status": "miss"
+     },
+     {
+      "label": {
+       "test_name": "E.S.R. (Westergren)",
+       "value": "13",
+       "unit": "mm/hr",
+       "reference_range": "0 - 15"
+      },
+      "issues": [
+       "dropped_row"
+      ],
+      "status": "miss"
+     },
+     {
+      "pred": {
+       "test_name": "Urine Clarity",
+       "value": null,
+       "unit": "N/A",
+       "reference_range": "Clear",
+       "status": "normal"
+      },
+      "issues": [
+       "invented_row"
+      ],
+      "status": "critical",
+      "note": "unpaired"
+     },
+     {
+      "pred": {
+       "test_name": "Urine Albumin",
+       "value": 0.0,
+       "unit": "N/A",
+       "reference_range": "Negative",
+       "status": "normal"
+      },
+      "issues": [
+       "invented_row"
+      ],
+      "status": "critical",
+      "note": "unpaired"
+     },
+     {
+      "pred": {
+       "test_name": "Urine Leucocytes",
+       "value": 2.5,
+       "unit": "/hpf",
+       "reference_range": "0 - 5 /hpf",
+       "status": "normal"
+      },
+      "issues": [
+       "invented_row"
+      ],
+      "status": "critical",
+      "note": "unpaired"
+     },
+     {
+      "pred": {
+       "test_name": "C-Reactive Protein (CRP)",
+       "value": 0.5,
+       "unit": "mg/L",
+       "reference_range": "< 5.0 mg/L",
+       "status": "normal"
+      },
+      "issues": [
+       "invented_row"
+      ],
+      "status": "critical",
+      "note": "unpaired"
+     },
+     {
+      "pred": {
+       "test_name": "Erythrocyte Sedimentation Rate (ESR)",
+       "value": 13.0,
+       "unit": "mm/hr",
+       "reference_range": "0 - 15 mm/hr",
+       "status": "normal"
+      },
+      "issues": [
+       "invented_row"
+      ],
+      "status": "critical",
+      "note": "unpaired"
+     }
+    ],
+    "row_status": [
+     "review",
+     "miss",
+     "review",
+     "review",
+     "miss",
+     "critical",
+     "critical",
+     "miss",
+     "review",
+     "review",
+     "miss",
+     "miss"
+    ]
+   },
+   "08": {
+    "rows": 6,
+    "correct": 4,
+    "critical": 1,
+    "wrong_value": 0,
+    "wrong_unit": 0,
+    "wrong_range": 0,
+    "invented_range": 0,
+    "invented_row": 1,
+    "unpaired": 1,
+    "duplicate": 0,
+    "miss_rows": 1,
+    "dropped_row": 1,
+    "null_value": 0,
+    "missing_unit": 0,
+    "missing_range": 0,
+    "review": 1,
+    "out_of_order": 0,
+    "abnormal_rows": 0,
+    "abnormal_critical": 0,
+    "failed": null,
+    "details": [
+     {
+      "label": {
+       "test_name": "Chol/HDL",
+       "value": "4.3",
+       "unit": null,
+       "reference_range": "< 5.0"
+      },
+      "pred": {
+       "test_name": "Cholesterol/HDL Ratio",
+       "value": 4.3,
+       "unit": "ratio",
+       "reference_range": "< 5.0",
+       "status": "normal"
+      },
+      "pairing": "exact",
+      "issues": [
+       "review_unit_added"
+      ],
+      "status": "review"
+     },
+     {
+      "label": {
+       "test_name": "LDL-C (Direct)",
+       "value": "73",
+       "unit": "mg/dL",
+       "reference_range": "< 100"
+      },
+      "issues": [
+       "dropped_row"
+      ],
+      "status": "miss"
+     },
+     {
+      "pred": {
+       "test_name": "LDL Cholesterol (Direct)",
+       "value": 73.0,
+       "unit": "mg/dL",
+       "reference_range": "< 100",
+       "status": "normal"
+      },
+      "issues": [
+       "invented_row"
+      ],
+      "status": "critical",
+      "note": "unpaired"
+     }
+    ],
+    "row_status": [
+     "correct",
+     "correct",
+     "correct",
+     "miss",
+     "correct",
+     "review"
+    ]
+   },
+   "09": {
+    "rows": 14,
+    "correct": 14,
+    "critical": 0,
+    "wrong_value": 0,
+    "wrong_unit": 0,
+    "wrong_range": 0,
+    "invented_range": 0,
+    "invented_row": 0,
+    "unpaired": 0,
+    "duplicate": 0,
+    "miss_rows": 0,
+    "dropped_row": 0,
+    "null_value": 0,
+    "missing_unit": 0,
+    "missing_range": 0,
+    "review": 0,
+    "out_of_order": 0,
+    "abnormal_rows": 3,
+    "abnormal_critical": 0,
+    "failed": null,
+    "details": [],
+    "row_status": [
+     "correct",
+     "correct",
+     "correct",
+     "correct",
+     "correct",
+     "correct",
+     "correct",
+     "correct",
+     "correct",
+     "correct",
+     "correct",
+     "correct",
+     "correct",
+     "correct"
+    ]
+   },
+   "11": {
+    "rows": 54,
+    "correct": 30,
+    "critical": 0,
+    "wrong_value": 0,
+    "wrong_unit": 0,
+    "wrong_range": 0,
+    "invented_range": 0,
+    "invented_row": 0,
+    "unpaired": 0,
+    "duplicate": 0,
+    "miss_rows": 24,
+    "dropped_row": 24,
+    "null_value": 0,
+    "missing_unit": 0,
+    "missing_range": 0,
+    "review": 0,
+    "out_of_order": 0,
+    "abnormal_rows": 9,
+    "abnormal_critical": 0,
+    "failed": null,
+    "details": [
+     {
+      "label": {
+       "test_name": "Urea",
+       "value": "42",
+       "unit": "mg/dL",
+       "reference_range": "15 - 40"
+      },
+      "issues": [
+       "dropped_row"
+      ],
+      "status": "miss"
+     },
+     {
+      "label": {
+       "test_name": "Creatinine",
+       "value": "1.00",
+       "unit": "mg/dL",
+       "reference_range": "0.70 - 1.30"
+      },
+      "issues": [
+       "dropped_row"
+      ],
+      "status": "miss"
+     },
+     {
+      "label": {
+       "test_name": "Serum Uric Acid",
+       "value": "6.5",
+       "unit": "mg/dL",
+       "reference_range": "3.5 - 7.2"
+      },
+      "issues": [
+       "dropped_row"
+      ],
+      "status": "miss"
+     },
+     {
+      "label": {
+       "test_name": "Sodium (Na+)",
+       "value": "142",
+       "unit": "mmol/L",
+       "reference_range": "136 - 146"
+      },
+      "issues": [
+       "dropped_row"
+      ],
+      "status": "miss"
+     },
+     {
+      "label": {
+       "test_name": "Potassium (K+)",
+       "value": "3.9",
+       "unit": "mmol/L",
+       "reference_range": "3.5 - 5.1"
+      },
+      "issues": [
+       "dropped_row"
+      ],
+      "status": "miss"
+     },
+     {
+      "label": {
+       "test_name": "Chloride (Cl-)",
+       "value": "100",
+       "unit": "mmol/L",
+       "reference_range": "98 - 107"
+      },
+      "issues": [
+       "dropped_row"
+      ],
+      "status": "miss"
+     },
+     {
+      "label": {
+       "test_name": "Triiodothyronine (T3)",
+       "value": "186",
+       "unit": "ng/dL",
+       "reference_range": "80 - 200"
+      },
+      "issues": [
+       "dropped_row"
+      ],
+      "status": "miss"
+     },
+     {
+      "label": {
+       "test_name": "Thyroxine (T4)",
+       "value": "13.2",
+       "unit": "µg/dL",
+       "reference_range": "5.1 - 14.1"
+      },
+      "issues": [
+       "dropped_row"
+      ],
+      "status": "miss"
+     },
+     {
+      "label": {
+       "test_name": "Thyroid Stimulating Hormone",
+       "value": "1.45",
+       "unit": "µIU/mL",
+       "reference_range": "0.27 - 4.20"
+      },
+      "issues": [
+       "dropped_row"
+      ],
+      "status": "miss"
+     },
+     {
+      "label": {
+       "test_name": "Glycosylated Haemoglobin (HbA1c)",
+       "value": "3.6",
+       "unit": "%",
+       "reference_range": "< 5.7"
+      },
+      "issues": [
+       "dropped_row"
+      ],
+      "status": "miss"
+     },
+     {
+      "label": {
+       "test_name": "Glucose - Fasting",
+       "value": "94",
+       "unit": "mg/dL",
+       "reference_range": "70 - 100"
+      },
+      "issues": [
+       "dropped_row"
+      ],
+      "status": "miss"
+     },
+     {
+      "label": {
+       "test_name": "Glucose - PP",
+       "value": "80",
+       "unit": "mg/dL",
+       "reference_range": "70 - 140"
+      },
+      "issues": [
+       "dropped_row"
+      ],
+      "status": "miss"
+     },
+     {
+      "label": {
+       "test_name": "25-Hydroxy Vitamin D",
+       "value": "118.8",
+       "unit": "ng/mL",
+       "reference_range": "30.0 - 100.0"
+      },
+      "issues": [
+       "dropped_row"
+      ],
+      "status": "miss"
+     },
+     {
+      "label": {
+       "test_name": "Cyanocobalamin (B12)",
+       "value": "498",
+       "unit": "pg/mL",
+       "reference_range": "197 - 771"
+      },
+      "issues": [
+       "dropped_row"
+      ],
+      "status": "miss"
+     },
+     {
+      "label": {
+       "test_name": "Color",
+       "value": "Pale Yellow",
+       "unit": null,
+       "reference_range": "Pale Yellow"
+      },
+      "issues": [
+       "dropped_row"
+      ],
+      "status": "miss"
+     },
+     {
+      "label": {
+       "test_name": "Appearance",
+       "value": "Clear",
+       "unit": null,
+       "reference_range": "Clear"
+      },
+      "issues": [
+       "dropped_row"
+      ],
+      "status": "miss"
+     },
+     {
+      "label": {
+       "test_name": "Reaction (pH)",
+       "value": "6.0",
+       "unit": null,
+       "reference_range": "5.0 - 8.0"
+      },
+      "issues": [
+       "dropped_row"
+      ],
+      "status": "miss"
+     },
+     {
+      "label": {
+       "test_name": "Sp. Gravity",
+       "value": "1.015",
+       "unit": null,
+       "reference_range": "1.005 - 1.030"
+      },
+      "issues": [
+       "dropped_row"
+      ],
+      "status": "miss"
+     },
+     {
+      "label": {
+       "test_name": "Urine Protein",
+       "value": "Negative",
+       "unit": null,
+       "reference_range": "Negative"
+      },
+      "issues": [
+       "dropped_row"
+      ],
+      "status": "miss"
+     },
+     {
+      "label": {
+       "test_name": "Urine Glucose",
+       "value": "Negative",
+       "unit": null,
+       "reference_range": "Negative"
+      },
+      "issues": [
+       "dropped_row"
+      ],
+      "status": "miss"
+     },
+     {
+      "label": {
+       "test_name": "Ketone Bodies",
+       "value": "Negative",
+       "unit": null,
+       "reference_range": "Negative"
+      },
+      "issues": [
+       "dropped_row"
+      ],
+      "status": "miss"
+     },
+     {
+      "label": {
+       "test_name": "Pus Cells (WBC)",
+       "value": "8-10",
+       "unit": "/hpf",
+       "reference_range": "0 - 5"
+      },
+      "issues": [
+       "dropped_row"
+      ],
+      "status": "miss"
+     },
+     {
+      "label": {
+       "test_name": "RBC",
+       "value": "Nil",
+       "unit": "/hpf",
+       "reference_range": "Nil"
+      },
+      "issues": [
+       "dropped_row"
+      ],
+      "status": "miss"
+     },
+     {
+      "label": {
+       "test_name": "Epithelial Cells",
+       "value": "3-4",
+       "unit": "/hpf",
+       "reference_range": "0 - 5"
+      },
+      "issues": [
+       "dropped_row"
+      ],
+      "status": "miss"
+     }
+    ],
+    "row_status": [
+     "correct",
+     "correct",
+     "correct",
+     "correct",
+     "correct",
+     "correct",
+     "correct",
+     "correct",
+     "correct",
+     "correct",
+     "correct",
+     "correct",
+     "correct",
+     "correct",
+     "correct",
+     "correct",
+     "correct",
+     "correct",
+     "correct",
+     "correct",
+     "correct",
+     "correct",
+     "correct",
+     "correct",
+     "correct",
+     "correct",
+     "correct",
+     "correct",
+     "correct",
+     "correct",
+     "miss",
+     "miss",
+     "miss",
+     "miss",
+     "miss",
+     "miss",
+     "miss",
+     "miss",
+     "miss",
+     "miss",
+     "miss",
+     "miss",
+     "miss",
+     "miss",
+     "miss",
+     "miss",
+     "miss",
+     "miss",
+     "miss",
+     "miss",
+     "miss",
+     "miss",
+     "miss",
+     "miss"
+    ]
+   }
+  },
+  {
+   "01": {
+    "rows": 14,
+    "correct": 11,
+    "critical": 3,
+    "wrong_value": 0,
+    "wrong_unit": 0,
+    "wrong_range": 0,
+    "invented_range": 0,
+    "invented_row": 3,
+    "unpaired": 3,
+    "duplicate": 0,
+    "miss_rows": 3,
+    "dropped_row": 3,
+    "null_value": 0,
+    "missing_unit": 0,
+    "missing_range": 0,
+    "review": 0,
+    "out_of_order": 0,
+    "abnormal_rows": 3,
+    "abnormal_critical": 0,
+    "failed": null,
+    "details": [
+     {
+      "label": {
+       "test_name": "MCV",
+       "value": "77.9",
+       "unit": "fL",
+       "reference_range": "83.0 - 101.0"
+      },
+      "issues": [
+       "dropped_row"
+      ],
+      "status": "miss"
+     },
+     {
+      "label": {
+       "test_name": "MCH",
+       "value": "27.9",
+       "unit": "pg",
+       "reference_range": "27.0 - 32.0"
+      },
+      "issues": [
+       "dropped_row"
+      ],
+      "status": "miss"
+     },
+     {
+      "label": {
+       "test_name": "MCHC",
+       "value": "34.2",
+       "unit": "g/dL",
+       "reference_range": "31.5 - 34.5"
+      },
+      "issues": [
+       "dropped_row"
+      ],
+      "status": "miss"
+     },
+     {
+      "pred": {
+       "test_name": "Mean Corpuscular Volume (MCV)",
+       "value": 77.9,
+       "unit": "fL",
+       "reference_range": "83.0 - 101.0",
+       "status": "low"
+      },
+      "issues": [
+       "invented_row"
+      ],
+      "status": "critical",
+      "note": "unpaired"
+     },
+     {
+      "pred": {
+       "test_name": "Mean Corpuscular Haemoglobin (MCH)",
+       "value": 27.9,
+       "unit": "pg",
+       "reference_range": "27.0 - 32.0",
+       "status": "normal"
+      },
+      "issues": [
+       "invented_row"
+      ],
+      "status": "critical",
+      "note": "unpaired"
+     },
+     {
+      "pred": {
+       "test_name": "Mean Corpuscular Haemoglobin Concentration (MCHC)",
+       "value": 34.2,
+       "unit": "g/dL",
+       "reference_range": "31.5 - 34.5",
+       "status": "normal"
+      },
+      "issues": [
+       "invented_row"
+      ],
+      "status": "critical",
+      "note": "unpaired"
+     }
+    ],
+    "row_status": [
+     "correct",
+     "correct",
+     "correct",
+     "miss",
+     "miss",
+     "miss",
+     "correct",
+     "correct",
+     "correct",
+     "correct",
+     "correct",
+     "correct",
+     "correct",
+     "correct"
+    ]
+   },
+   "02": {
+    "rows": 16,
+    "correct": 13,
+    "critical": 1,
+    "wrong_value": 0,
+    "wrong_unit": 0,
+    "wrong_range": 0,
+    "invented_range": 0,
+    "invented_row": 1,
+    "unpaired": 1,
+    "duplicate": 0,
+    "miss_rows": 1,
+    "dropped_row": 1,
+    "null_value": 0,
+    "missing_unit": 0,
+    "missing_range": 0,
+    "review": 2,
+    "out_of_order": 0,
+    "abnormal_rows": 6,
+    "abnormal_critical": 0,
+    "failed": null,
+    "details": [
+     {
+      "label": {
+       "test_name": "Aspartate Aminotransferase",
+       "value": "50",
+       "unit": "U/L",
+       "reference_range": "5 - 40"
+      },
+      "pred": {
+       "test_name": "Aspartate Aminotransferase (AST)",
+       "value": 50.0,
+       "unit": "U/L",
+       "reference_range": "5 - 40",
+       "status": "high"
+      },
+      "pairing": "fuzzy",
+      "issues": [
+       "review_fuzzy"
+      ],
+      "status": "review"
+     },
+     {
+      "label": {
+       "test_name": "Alanine Aminotransferase",
+       "value": "2",
+       "unit": "U/L",
+       "reference_range": "5 - 45"
+      },
+      "pred": {
+       "test_name": "Alanine Aminotransferase (ALT)",
+       "value": 2.0,
+       "unit": "U/L",
+       "reference_range": "5 - 45",
+       "status": "low"
+      },
+      "pairing": "fuzzy",
+      "issues": [
+       "review_fuzzy"
+      ],
+      "status": "review"
+     },
+     {
+      "label": {
+       "test_name": "ALP",
+       "value": "118",
+       "unit": "U/L",
+       "reference_range": "40 - 129"
+      },
+      "issues": [
+       "dropped_row"
+      ],
+      "status": "miss"
+     },
+     {
+      "pred": {
+       "test_name": "Alkaline Phosphatase (ALP)",
+       "value": 118.0,
+       "unit": "U/L",
+       "reference_range": "40 - 129",
+       "status": "normal"
+      },
+      "issues": [
+       "invented_row"
+      ],
+      "status": "critical",
+      "note": "unpaired"
+     }
+    ],
+    "row_status": [
+     "correct",
+     "correct",
+     "correct",
+     "correct",
+     "correct",
+     "correct",
+     "correct",
+     "correct",
+     "correct",
+     "review",
+     "review",
+     "miss",
+     "correct",
+     "correct",
+     "correct",
+     "correct"
+    ]
+   },
+   "03": {
+    "rows": 8,
+    "correct": 3,
+    "critical": 5,
+    "wrong_value": 0,
+    "wrong_unit": 0,
+    "wrong_range": 0,
+    "invented_range": 3,
+    "invented_row": 2,
+    "unpaired": 2,
+    "duplicate": 0,
+    "miss_rows": 2,
+    "dropped_row": 2,
+    "null_value": 0,
+    "missing_unit": 0,
+    "missing_range": 0,
+    "review": 0,
+    "out_of_order": 0,
+    "abnormal_rows": 0,
+    "abnormal_critical": 0,
+    "failed": null,
+    "details": [
+     {
+      "label": {
+       "test_name": "T3",
+       "value": "179",
+       "unit": "ng/dL",
+       "reference_range": null
+      },
+      "pred": {
+       "test_name": "Triiodothyronine (T3)",
+       "value": 179.0,
+       "unit": "ng/dL",
+       "reference_range": "80 - 200",
+       "status": "normal"
+      },
+      "pairing": "exact",
+      "issues": [
+       "invented_range"
+      ],
+      "status": "critical"
+     },
+     {
+      "label": {
+       "test_name": "T4",
+       "value": "10.9",
+       "unit": "µg/dL",
+       "reference_range": null
+      },
+      "pred": {
+       "test_name": "Thyroxine (T4)",
+       "value": 10.9,
+       "unit": "µg/dL",
+       "reference_range": "5.0 - 12.0",
+       "status": "normal"
+      },
+      "pairing": "exact",
+      "issues": [
+       "invented_range"
+      ],
+      "status": "critical"
+     },
+     {
+      "label": {
+       "test_name": "Glycated Hb",
+       "value": "6.0",
+       "unit": "%",
+       "reference_range": null
+      },
+      "pred": {
+       "test_name": "Glycated Hemoglobin (HbA1c)",
+       "value": 6.0,
+       "unit": "%",
+       "reference_range": "4.0 - 5.6",
+       "status": "high"
+      },
+      "pairing": "exact",
+      "issues": [
+       "invented_range"
+      ],
+      "status": "critical"
+     },
+     {
+      "label": {
+       "test_name": "FBS",
+       "value": "88",
+       "unit": "mg/dL",
+       "reference_range": "70 - 100"
+      },
+      "issues": [
+       "dropped_row"
+      ],
+      "status": "miss"
+     },
+     {
+      "label": {
+       "test_name": "PPBS",
+       "value": "95",
+       "unit": "mg/dL",
+       "reference_range": "70 - 140"
+      },
+      "issues": [
+       "dropped_row"
+      ],
+      "status": "miss"
+     },
+     {
+      "pred": {
+       "test_name": "Fasting Blood Sugar (FBS)",
+       "value": 88.0,
+       "unit": "mg/dL",
+       "reference_range": "70 - 100",
+       "status": "normal"
+      },
+      "issues": [
+       "invented_row"
+      ],
+      "status": "critical",
+      "note": "unpaired"
+     },
+     {
+      "pred": {
+       "test_name": "Postprandial Blood Sugar (PPBS)",
+       "value": 95.0,
+       "unit": "mg/dL",
+       "reference_range": "70 - 140",
+       "status": "normal"
+      },
+      "issues": [
+       "invented_row"
+      ],
+      "status": "critical",
+      "note": "unpaired"
+     }
+    ],
+    "row_status": [
+     "critical",
+     "critical",
+     "correct",
+     "correct",
+     "correct",
+     "critical",
+     "miss",
+     "miss"
+    ]
+   },
+   "05": {
+    "rows": 14,
+    "correct": 11,
+    "critical": 3,
+    "wrong_value": 0,
+    "wrong_unit": 0,
+    "wrong_range": 0,
+    "invented_range": 0,
+    "invented_row": 3,
+    "unpaired": 3,
+    "duplicate": 0,
+    "miss_rows": 3,
+    "dropped_row": 3,
+    "null_value": 0,
+    "missing_unit": 0,
+    "missing_range": 0,
+    "review": 0,
+    "out_of_order": 0,
+    "abnormal_rows": 5,
+    "abnormal_critical": 0,
+    "failed": null,
+    "details": [
+     {
+      "label": {
+       "test_name": "MCV",
+       "value": "94.9",
+       "unit": "fL",
+       "reference_range": "83.0 - 101.0"
+      },
+      "issues": [
+       "dropped_row"
+      ],
+      "status": "miss"
+     },
+     {
+      "label": {
+       "test_name": "MCH",
+       "value": "28.3",
+       "unit": "pg",
+       "reference_range": "27.0 - 32.0"
+      },
+      "issues": [
+       "dropped_row"
+      ],
+      "status": "miss"
+     },
+     {
+      "label": {
+       "test_name": "MCHC",
+       "value": "33.5",
+       "unit": "g/dL",
+       "reference_range": "31.5 - 34.5"
+      },
+      "issues": [
+       "dropped_row"
+      ],
+      "status": "miss"
+     },
+     {
+      "pred": {
+       "test_name": "Mean Corpuscular Volume (MCV)",
+       "value": 94.9,
+       "unit": "fL",
+       "reference_range": "83.0 - 101.0",
+       "status": "normal"
+      },
+      "issues": [
+       "invented_row"
+      ],
+      "status": "critical",
+      "note": "unpaired"
+     },
+     {
+      "pred": {
+       "test_name": "Mean Corpuscular Haemoglobin (MCH)",
+       "value": 28.3,
+       "unit": "pg",
+       "reference_range": "27.0 - 32.0",
+       "status": "normal"
+      },
+      "issues": [
+       "invented_row"
+      ],
+      "status": "critical",
+      "note": "unpaired"
+     },
+     {
+      "pred": {
+       "test_name": "Mean Corpuscular Haemoglobin Concentration (MCHC)",
+       "value": 33.5,
+       "unit": "g/dL",
+       "reference_range": "31.5 - 34.5",
+       "status": "normal"
+      },
+      "issues": [
+       "invented_row"
+      ],
+      "status": "critical",
+      "note": "unpaired"
+     }
+    ],
+    "row_status": [
+     "correct",
+     "correct",
+     "correct",
+     "miss",
+     "miss",
+     "miss",
+     "correct",
+     "correct",
+     "correct",
+     "correct",
+     "correct",
+     "correct",
+     "correct",
+     "correct"
+    ]
+   },
+   "06": {
+    "rows": 12,
+    "correct": 0,
+    "critical": 7,
+    "wrong_value": 2,
+    "wrong_unit": 0,
+    "wrong_range": 0,
+    "invented_range": 0,
+    "invented_row": 5,
+    "unpaired": 5,
+    "duplicate": 0,
+    "miss_rows": 5,
+    "dropped_row": 5,
+    "null_value": 1,
+    "missing_unit": 0,
+    "missing_range": 0,
+    "review": 5,
+    "out_of_order": 0,
+    "abnormal_rows": 3,
+    "abnormal_critical": 1,
+    "failed": null,
+    "details": [
+     {
+      "label": {
+       "test_name": "Colour",
+       "value": "Dark Yellow",
+       "unit": null,
+       "reference_range": "Pale Yellow"
+      },
+      "pred": {
+       "test_name": "Urine Colour",
+       "value": null,
+       "unit": "N/A",
+       "reference_range": "Pale Yellow",
+       "status": "abnormal"
+      },
+      "pairing": "exact",
+      "issues": [
+       "null_value",
+       "review_unit_added"
+      ],
+      "status": "review"
+     },
+     {
+      "label": {
+       "test_name": "pH",
+       "value": "6.5",
+       "unit": null,
+       "reference_range": "5.0 - 8.0"
+      },
+      "pred": {
+       "test_name": "Urine pH",
+       "value": 6.5,
+       "unit": "pH",
+       "reference_range": "5.0 - 8.0",
+       "status": "normal"
+      },
+      "pairing": "exact",
+      "issues": [
+       "review_unit_added"
+      ],
+      "status": "review"
+     },
+     {
+      "label": {
+       "test_name": "Specific Gravity",
+       "value": "1.020",
+       "unit": null,
+       "reference_range": "1.005 - 1.030"
+      },
+      "pred": {
+       "test_name": "Urine Specific Gravity",
+       "value": 1.02,
+       "unit": "g/mL",
+       "reference_range": "1.005 - 1.030",
+       "status": "normal"
+      },
+      "pairing": "fuzzy",
+      "issues": [
+       "review_fuzzy",
+       "review_unit_added"
+      ],
+      "status": "review"
+     },
+     {
+      "label": {
+       "test_name": "Sugar",
+       "value": "Present (+)",
+       "unit": null,
+       "reference_range": "Negative"
+      },
+      "pred": {
+       "test_name": "Urine Sugar",
+       "value": 1.0,
+       "unit": "N/A",
+       "reference_range": "Negative",
+       "status": "high"
+      },
+      "pairing": "exact",
+      "issues": [
+       "wrong_value",
+       "review_unit_added"
+      ],
+      "status": "critical"
+     },
+     {
+      "label": {
+       "test_name": "Ketones",
+       "value": "Negative",
+       "unit": null,
+       "reference_range": "Negative"
+      },
+      "pred": {
+       "test_name": "Urine Ketones",
+       "value": 0.0,
+       "unit": "N/A",
+       "reference_range": "Negative",
+       "status": "normal"
+      },
+      "pairing": "exact",
+      "issues": [
+       "wrong_value",
+       "review_unit_added"
+      ],
+      "status": "critical"
+     },
+     {
+      "label": {
+       "test_name": "Erythrocytes",
+       "value": "1-2",
+       "unit": "/hpf",
+       "reference_range": "Nil"
+      },
+      "pred": {
+       "test_name": "Urine Erythrocytes",
+       "value": 1.5,
+       "unit": "/hpf",
+       "reference_range": "0 - 0 /hpf",
+       "status": "high"
+      },
+      "pairing": "fuzzy",
+      "issues": [
+       "review_fuzzy",
+       "wrong_value",
+       "review_range_format"
+      ],
+      "status": "review"
+     },
+     {
+      "label": {
+       "test_name": "Squamous Epithelial Cells",
+       "value": "1-2",
+       "unit": "/hpf",
+       "reference_range": "0 - 5"
+      },
+      "pred": {
+       "test_name": "Urine Squamous Epithelial Cells",
+       "value": 1.5,
+       "unit": "/hpf",
+       "reference_range": "0 - 5 /hpf",
+       "status": "normal"
+      },
+      "pairing": "fuzzy",
+      "issues": [
+       "review_fuzzy",
+       "wrong_value"
+      ],
+      "status": "review"
+     },
+     {
+      "label": {
+       "test_name": "Clarity",
+       "value": "Clear",
+       "unit": null,
+       "reference_range": "Clear"
+      },
+      "issues": [
+       "dropped_row"
+      ],
+      "status": "miss"
+     },
+     {
+      "label": {
+       "test_name": "Albumin",
+       "value": "Negative",
+       "unit": null,
+       "reference_range": "Negative"
+      },
+      "issues": [
+       "dropped_row"
+      ],
+      "status": "miss"
+     },
+     {
+      "label": {
+       "test_name": "Leucocytes",
+       "value": "2-3",
+       "unit": "/hpf",
+       "reference_range": "0 - 5"
+      },
+      "issues": [
+       "dropped_row"
+      ],
+      "status": "miss"
+     },
+     {
+      "label": {
+       "test_name": "CRP",
+       "value": "< 0.5",
+       "unit": "mg/L",
+       "reference_range": "< 5.0"
+      },
+      "issues": [
+       "dropped_row"
+      ],
+      "status": "miss"
+     },
+     {
+      "label": {
+       "test_name": "E.S.R. (Westergren)",
+       "value": "13",
+       "unit": "mm/hr",
+       "reference_range": "0 - 15"
+      },
+      "issues": [
+       "dropped_row"
+      ],
+      "status": "miss"
+     },
+     {
+      "pred": {
+       "test_name": "Urine Clarity",
+       "value": null,
+       "unit": "N/A",
+       "reference_range": "Clear",
+       "status": "normal"
+      },
+      "issues": [
+       "invented_row"
+      ],
+      "status": "critical",
+      "note": "unpaired"
+     },
+     {
+      "pred": {
+       "test_name": "Urine Albumin",
+       "value": 0.0,
+       "unit": "N/A",
+       "reference_range": "Negative",
+       "status": "normal"
+      },
+      "issues": [
+       "invented_row"
+      ],
+      "status": "critical",
+      "note": "unpaired"
+     },
+     {
+      "pred": {
+       "test_name": "Urine Leucocytes",
+       "value": 2.5,
+       "unit": "/hpf",
+       "reference_range": "0 - 5 /hpf",
+       "status": "normal"
+      },
+      "issues": [
+       "invented_row"
+      ],
+      "status": "critical",
+      "note": "unpaired"
+     },
+     {
+      "pred": {
+       "test_name": "C-Reactive Protein (CRP)",
+       "value": 0.5,
+       "unit": "mg/L",
+       "reference_range": "< 5.0 mg/L",
+       "status": "normal"
+      },
+      "issues": [
+       "invented_row"
+      ],
+      "status": "critical",
+      "note": "unpaired"
+     },
+     {
+      "pred": {
+       "test_name": "Erythrocyte Sedimentation Rate (ESR)",
+       "value": 13.0,
+       "unit": "mm/hr",
+       "reference_range": "0 - 15 mm/hr",
+       "status": "normal"
+      },
+      "issues": [
+       "invented_row"
+      ],
+      "status": "critical",
+      "note": "unpaired"
+     }
+    ],
+    "row_status": [
+     "review",
+     "miss",
+     "review",
+     "review",
+     "miss",
+     "critical",
+     "critical",
+     "miss",
+     "review",
+     "review",
+     "miss",
+     "miss"
+    ]
+   },
+   "08": {
+    "rows": 6,
+    "correct": 4,
+    "critical": 1,
+    "wrong_value": 0,
+    "wrong_unit": 0,
+    "wrong_range": 0,
+    "invented_range": 0,
+    "invented_row": 1,
+    "unpaired": 1,
+    "duplicate": 0,
+    "miss_rows": 1,
+    "dropped_row": 1,
+    "null_value": 0,
+    "missing_unit": 0,
+    "missing_range": 0,
+    "review": 1,
+    "out_of_order": 0,
+    "abnormal_rows": 0,
+    "abnormal_critical": 0,
+    "failed": null,
+    "details": [
+     {
+      "label": {
+       "test_name": "Chol/HDL",
+       "value": "4.3",
+       "unit": null,
+       "reference_range": "< 5.0"
+      },
+      "pred": {
+       "test_name": "Cholesterol/HDL Ratio",
+       "value": 4.3,
+       "unit": "ratio",
+       "reference_range": "< 5.0",
+       "status": "normal"
+      },
+      "pairing": "exact",
+      "issues": [
+       "review_unit_added"
+      ],
+      "status": "review"
+     },
+     {
+      "label": {
+       "test_name": "LDL-C (Direct)",
+       "value": "73",
+       "unit": "mg/dL",
+       "reference_range": "< 100"
+      },
+      "issues": [
+       "dropped_row"
+      ],
+      "status": "miss"
+     },
+     {
+      "pred": {
+       "test_name": "LDL Cholesterol (Direct)",
+       "value": 73.0,
+       "unit": "mg/dL",
+       "reference_range": "< 100",
+       "status": "normal"
+      },
+      "issues": [
+       "invented_row"
+      ],
+      "status": "critical",
+      "note": "unpaired"
+     }
+    ],
+    "row_status": [
+     "correct",
+     "correct",
+     "correct",
+     "miss",
+     "correct",
+     "review"
+    ]
+   },
+   "09": {
+    "rows": 14,
+    "correct": 14,
+    "critical": 0,
+    "wrong_value": 0,
+    "wrong_unit": 0,
+    "wrong_range": 0,
+    "invented_range": 0,
+    "invented_row": 0,
+    "unpaired": 0,
+    "duplicate": 0,
+    "miss_rows": 0,
+    "dropped_row": 0,
+    "null_value": 0,
+    "missing_unit": 0,
+    "missing_range": 0,
+    "review": 0,
+    "out_of_order": 0,
+    "abnormal_rows": 3,
+    "abnormal_critical": 0,
+    "failed": null,
+    "details": [],
+    "row_status": [
+     "correct",
+     "correct",
+     "correct",
+     "correct",
+     "correct",
+     "correct",
+     "correct",
+     "correct",
+     "correct",
+     "correct",
+     "correct",
+     "correct",
+     "correct",
+     "correct"
+    ]
+   },
+   "11": {
+    "rows": 54,
+    "correct": 30,
+    "critical": 0,
+    "wrong_value": 0,
+    "wrong_unit": 0,
+    "wrong_range": 0,
+    "invented_range": 0,
+    "invented_row": 0,
+    "unpaired": 0,
+    "duplicate": 0,
+    "miss_rows": 24,
+    "dropped_row": 24,
+    "null_value": 0,
+    "missing_unit": 0,
+    "missing_range": 0,
+    "review": 0,
+    "out_of_order": 0,
+    "abnormal_rows": 9,
+    "abnormal_critical": 0,
+    "failed": null,
+    "details": [
+     {
+      "label": {
+       "test_name": "Urea",
+       "value": "42",
+       "unit": "mg/dL",
+       "reference_range": "15 - 40"
+      },
+      "issues": [
+       "dropped_row"
+      ],
+      "status": "miss"
+     },
+     {
+      "label": {
+       "test_name": "Creatinine",
+       "value": "1.00",
+       "unit": "mg/dL",
+       "reference_range": "0.70 - 1.30"
+      },
+      "issues": [
+       "dropped_row"
+      ],
+      "status": "miss"
+     },
+     {
+      "label": {
+       "test_name": "Serum Uric Acid",
+       "value": "6.5",
+       "unit": "mg/dL",
+       "reference_range": "3.5 - 7.2"
+      },
+      "issues": [
+       "dropped_row"
+      ],
+      "status": "miss"
+     },
+     {
+      "label": {
+       "test_name": "Sodium (Na+)",
+       "value": "142",
+       "unit": "mmol/L",
+       "reference_range": "136 - 146"
+      },
+      "issues": [
+       "dropped_row"
+      ],
+      "status": "miss"
+     },
+     {
+      "label": {
+       "test_name": "Potassium (K+)",
+       "value": "3.9",
+       "unit": "mmol/L",
+       "reference_range": "3.5 - 5.1"
+      },
+      "issues": [
+       "dropped_row"
+      ],
+      "status": "miss"
+     },
+     {
+      "label": {
+       "test_name": "Chloride (Cl-)",
+       "value": "100",
+       "unit": "mmol/L",
+       "reference_range": "98 - 107"
+      },
+      "issues": [
+       "dropped_row"
+      ],
+      "status": "miss"
+     },
+     {
+      "label": {
+       "test_name": "Triiodothyronine (T3)",
+       "value": "186",
+       "unit": "ng/dL",
+       "reference_range": "80 - 200"
+      },
+      "issues": [
+       "dropped_row"
+      ],
+      "status": "miss"
+     },
+     {
+      "label": {
+       "test_name": "Thyroxine (T4)",
+       "value": "13.2",
+       "unit": "µg/dL",
+       "reference_range": "5.1 - 14.1"
+      },
+      "issues": [
+       "dropped_row"
+      ],
+      "status": "miss"
+     },
+     {
+      "label": {
+       "test_name": "Thyroid Stimulating Hormone",
+       "value": "1.45",
+       "unit": "µIU/mL",
+       "reference_range": "0.27 - 4.20"
+      },
+      "issues": [
+       "dropped_row"
+      ],
+      "status": "miss"
+     },
+     {
+      "label": {
+       "test_name": "Glycosylated Haemoglobin (HbA1c)",
+       "value": "3.6",
+       "unit": "%",
+       "reference_range": "< 5.7"
+      },
+      "issues": [
+       "dropped_row"
+      ],
+      "status": "miss"
+     },
+     {
+      "label": {
+       "test_name": "Glucose - Fasting",
+       "value": "94",
+       "unit": "mg/dL",
+       "reference_range": "70 - 100"
+      },
+      "issues": [
+       "dropped_row"
+      ],
+      "status": "miss"
+     },
+     {
+      "label": {
+       "test_name": "Glucose - PP",
+       "value": "80",
+       "unit": "mg/dL",
+       "reference_range": "70 - 140"
+      },
+      "issues": [
+       "dropped_row"
+      ],
+      "status": "miss"
+     },
+     {
+      "label": {
+       "test_name": "25-Hydroxy Vitamin D",
+       "value": "118.8",
+       "unit": "ng/mL",
+       "reference_range": "30.0 - 100.0"
+      },
+      "issues": [
+       "dropped_row"
+      ],
+      "status": "miss"
+     },
+     {
+      "label": {
+       "test_name": "Cyanocobalamin (B12)",
+       "value": "498",
+       "unit": "pg/mL",
+       "reference_range": "197 - 771"
+      },
+      "issues": [
+       "dropped_row"
+      ],
+      "status": "miss"
+     },
+     {
+      "label": {
+       "test_name": "Color",
+       "value": "Pale Yellow",
+       "unit": null,
+       "reference_range": "Pale Yellow"
+      },
+      "issues": [
+       "dropped_row"
+      ],
+      "status": "miss"
+     },
+     {
+      "label": {
+       "test_name": "Appearance",
+       "value": "Clear",
+       "unit": null,
+       "reference_range": "Clear"
+      },
+      "issues": [
+       "dropped_row"
+      ],
+      "status": "miss"
+     },
+     {
+      "label": {
+       "test_name": "Reaction (pH)",
+       "value": "6.0",
+       "unit": null,
+       "reference_range": "5.0 - 8.0"
+      },
+      "issues": [
+       "dropped_row"
+      ],
+      "status": "miss"
+     },
+     {
+      "label": {
+       "test_name": "Sp. Gravity",
+       "value": "1.015",
+       "unit": null,
+       "reference_range": "1.005 - 1.030"
+      },
+      "issues": [
+       "dropped_row"
+      ],
+      "status": "miss"
+     },
+     {
+      "label": {
+       "test_name": "Urine Protein",
+       "value": "Negative",
+       "unit": null,
+       "reference_range": "Negative"
+      },
+      "issues": [
+       "dropped_row"
+      ],
+      "status": "miss"
+     },
+     {
+      "label": {
+       "test_name": "Urine Glucose",
+       "value": "Negative",
+       "unit": null,
+       "reference_range": "Negative"
+      },
+      "issues": [
+       "dropped_row"
+      ],
+      "status": "miss"
+     },
+     {
+      "label": {
+       "test_name": "Ketone Bodies",
+       "value": "Negative",
+       "unit": null,
+       "reference_range": "Negative"
+      },
+      "issues": [
+       "dropped_row"
+      ],
+      "status": "miss"
+     },
+     {
+      "label": {
+       "test_name": "Pus Cells (WBC)",
+       "value": "8-10",
+       "unit": "/hpf",
+       "reference_range": "0 - 5"
+      },
+      "issues": [
+       "dropped_row"
+      ],
+      "status": "miss"
+     },
+     {
+      "label": {
+       "test_name": "RBC",
+       "value": "Nil",
+       "unit": "/hpf",
+       "reference_range": "Nil"
+      },
+      "issues": [
+       "dropped_row"
+      ],
+      "status": "miss"
+     },
+     {
+      "label": {
+       "test_name": "Epithelial Cells",
+       "value": "3-4",
+       "unit": "/hpf",
+       "reference_range": "0 - 5"
+      },
+      "issues": [
+       "dropped_row"
+      ],
+      "status": "miss"
+     }
+    ],
+    "row_status": [
+     "correct",
+     "correct",
+     "correct",
+     "correct",
+     "correct",
+     "correct",
+     "correct",
+     "correct",
+     "correct",
+     "correct",
+     "correct",
+     "correct",
+     "correct",
+     "correct",
+     "correct",
+     "correct",
+     "correct",
+     "correct",
+     "correct",
+     "correct",
+     "correct",
+     "correct",
+     "correct",
+     "correct",
+     "correct",
+     "correct",
+     "correct",
+     "correct",
+     "correct",
+     "correct",
+     "miss",
+     "miss",
+     "miss",
+     "miss",
+     "miss",
+     "miss",
+     "miss",
+     "miss",
+     "miss",
+     "miss",
+     "miss",
+     "miss",
+     "miss",
+     "miss",
+     "miss",
+     "miss",
+     "miss",
+     "miss",
+     "miss",
+     "miss",
+     "miss",
+     "miss",
+     "miss",
+     "miss"
+    ]
+   }
+  },
+  {
+   "01": {
+    "rows": 14,
+    "correct": 11,
+    "critical": 3,
+    "wrong_value": 0,
+    "wrong_unit": 0,
+    "wrong_range": 0,
+    "invented_range": 0,
+    "invented_row": 3,
+    "unpaired": 3,
+    "duplicate": 0,
+    "miss_rows": 3,
+    "dropped_row": 3,
+    "null_value": 0,
+    "missing_unit": 0,
+    "missing_range": 0,
+    "review": 0,
+    "out_of_order": 0,
+    "abnormal_rows": 3,
+    "abnormal_critical": 0,
+    "failed": null,
+    "details": [
+     {
+      "label": {
+       "test_name": "MCV",
+       "value": "77.9",
+       "unit": "fL",
+       "reference_range": "83.0 - 101.0"
+      },
+      "issues": [
+       "dropped_row"
+      ],
+      "status": "miss"
+     },
+     {
+      "label": {
+       "test_name": "MCH",
+       "value": "27.9",
+       "unit": "pg",
+       "reference_range": "27.0 - 32.0"
+      },
+      "issues": [
+       "dropped_row"
+      ],
+      "status": "miss"
+     },
+     {
+      "label": {
+       "test_name": "MCHC",
+       "value": "34.2",
+       "unit": "g/dL",
+       "reference_range": "31.5 - 34.5"
+      },
+      "issues": [
+       "dropped_row"
+      ],
+      "status": "miss"
+     },
+     {
+      "pred": {
+       "test_name": "Mean Corpuscular Volume (MCV)",
+       "value": 77.9,
+       "unit": "fL",
+       "reference_range": "83.0 - 101.0",
+       "status": "low"
+      },
+      "issues": [
+       "invented_row"
+      ],
+      "status": "critical",
+      "note": "unpaired"
+     },
+     {
+      "pred": {
+       "test_name": "Mean Corpuscular Haemoglobin (MCH)",
+       "value": 27.9,
+       "unit": "pg",
+       "reference_range": "27.0 - 32.0",
+       "status": "normal"
+      },
+      "issues": [
+       "invented_row"
+      ],
+      "status": "critical",
+      "note": "unpaired"
+     },
+     {
+      "pred": {
+       "test_name": "Mean Corpuscular Haemoglobin Concentration (MCHC)",
+       "value": 34.2,
+       "unit": "g/dL",
+       "reference_range": "31.5 - 34.5",
+       "status": "normal"
+      },
+      "issues": [
+       "invented_row"
+      ],
+      "status": "critical",
+      "note": "unpaired"
+     }
+    ],
+    "row_status": [
+     "correct",
+     "correct",
+     "correct",
+     "miss",
+     "miss",
+     "miss",
+     "correct",
+     "correct",
+     "correct",
+     "correct",
+     "correct",
+     "correct",
+     "correct",
+     "correct"
+    ]
+   },
+   "02": {
+    "rows": 16,
+    "correct": 13,
+    "critical": 1,
+    "wrong_value": 0,
+    "wrong_unit": 0,
+    "wrong_range": 0,
+    "invented_range": 0,
+    "invented_row": 1,
+    "unpaired": 1,
+    "duplicate": 0,
+    "miss_rows": 1,
+    "dropped_row": 1,
+    "null_value": 0,
+    "missing_unit": 0,
+    "missing_range": 0,
+    "review": 2,
+    "out_of_order": 0,
+    "abnormal_rows": 6,
+    "abnormal_critical": 0,
+    "failed": null,
+    "details": [
+     {
+      "label": {
+       "test_name": "Aspartate Aminotransferase",
+       "value": "50",
+       "unit": "U/L",
+       "reference_range": "5 - 40"
+      },
+      "pred": {
+       "test_name": "Aspartate Aminotransferase (AST)",
+       "value": 50.0,
+       "unit": "U/L",
+       "reference_range": "5 - 40",
+       "status": "high"
+      },
+      "pairing": "fuzzy",
+      "issues": [
+       "review_fuzzy"
+      ],
+      "status": "review"
+     },
+     {
+      "label": {
+       "test_name": "Alanine Aminotransferase",
+       "value": "2",
+       "unit": "U/L",
+       "reference_range": "5 - 45"
+      },
+      "pred": {
+       "test_name": "Alanine Aminotransferase (ALT)",
+       "value": 2.0,
+       "unit": "U/L",
+       "reference_range": "5 - 45",
+       "status": "low"
+      },
+      "pairing": "fuzzy",
+      "issues": [
+       "review_fuzzy"
+      ],
+      "status": "review"
+     },
+     {
+      "label": {
+       "test_name": "ALP",
+       "value": "118",
+       "unit": "U/L",
+       "reference_range": "40 - 129"
+      },
+      "issues": [
+       "dropped_row"
+      ],
+      "status": "miss"
+     },
+     {
+      "pred": {
+       "test_name": "Alkaline Phosphatase (ALP)",
+       "value": 118.0,
+       "unit": "U/L",
+       "reference_range": "40 - 129",
+       "status": "normal"
+      },
+      "issues": [
+       "invented_row"
+      ],
+      "status": "critical",
+      "note": "unpaired"
+     }
+    ],
+    "row_status": [
+     "correct",
+     "correct",
+     "correct",
+     "correct",
+     "correct",
+     "correct",
+     "correct",
+     "correct",
+     "correct",
+     "review",
+     "review",
+     "miss",
+     "correct",
+     "correct",
+     "correct",
+     "correct"
+    ]
+   },
+   "03": {
+    "rows": 8,
+    "correct": 3,
+    "critical": 5,
+    "wrong_value": 0,
+    "wrong_unit": 0,
+    "wrong_range": 0,
+    "invented_range": 3,
+    "invented_row": 2,
+    "unpaired": 2,
+    "duplicate": 0,
+    "miss_rows": 2,
+    "dropped_row": 2,
+    "null_value": 0,
+    "missing_unit": 0,
+    "missing_range": 0,
+    "review": 0,
+    "out_of_order": 0,
+    "abnormal_rows": 0,
+    "abnormal_critical": 0,
+    "failed": null,
+    "details": [
+     {
+      "label": {
+       "test_name": "T3",
+       "value": "179",
+       "unit": "ng/dL",
+       "reference_range": null
+      },
+      "pred": {
+       "test_name": "Triiodothyronine (T3)",
+       "value": 179.0,
+       "unit": "ng/dL",
+       "reference_range": "80 - 200",
+       "status": "normal"
+      },
+      "pairing": "exact",
+      "issues": [
+       "invented_range"
+      ],
+      "status": "critical"
+     },
+     {
+      "label": {
+       "test_name": "T4",
+       "value": "10.9",
+       "unit": "µg/dL",
+       "reference_range": null
+      },
+      "pred": {
+       "test_name": "Thyroxine (T4)",
+       "value": 10.9,
+       "unit": "µg/dL",
+       "reference_range": "5.0 - 12.0",
+       "status": "normal"
+      },
+      "pairing": "exact",
+      "issues": [
+       "invented_range"
+      ],
+      "status": "critical"
+     },
+     {
+      "label": {
+       "test_name": "Glycated Hb",
+       "value": "6.0",
+       "unit": "%",
+       "reference_range": null
+      },
+      "pred": {
+       "test_name": "Glycated Hemoglobin (HbA1c)",
+       "value": 6.0,
+       "unit": "%",
+       "reference_range": "4.0 - 5.6",
+       "status": "high"
+      },
+      "pairing": "exact",
+      "issues": [
+       "invented_range"
+      ],
+      "status": "critical"
+     },
+     {
+      "label": {
+       "test_name": "FBS",
+       "value": "88",
+       "unit": "mg/dL",
+       "reference_range": "70 - 100"
+      },
+      "issues": [
+       "dropped_row"
+      ],
+      "status": "miss"
+     },
+     {
+      "label": {
+       "test_name": "PPBS",
+       "value": "95",
+       "unit": "mg/dL",
+       "reference_range": "70 - 140"
+      },
+      "issues": [
+       "dropped_row"
+      ],
+      "status": "miss"
+     },
+     {
+      "pred": {
+       "test_name": "Fasting Blood Sugar (FBS)",
+       "value": 88.0,
+       "unit": "mg/dL",
+       "reference_range": "70 - 100",
+       "status": "normal"
+      },
+      "issues": [
+       "invented_row"
+      ],
+      "status": "critical",
+      "note": "unpaired"
+     },
+     {
+      "pred": {
+       "test_name": "Postprandial Blood Sugar (PPBS)",
+       "value": 95.0,
+       "unit": "mg/dL",
+       "reference_range": "70 - 140",
+       "status": "normal"
+      },
+      "issues": [
+       "invented_row"
+      ],
+      "status": "critical",
+      "note": "unpaired"
+     }
+    ],
+    "row_status": [
+     "critical",
+     "critical",
+     "correct",
+     "correct",
+     "correct",
+     "critical",
+     "miss",
+     "miss"
+    ]
+   },
+   "05": {
+    "rows": 14,
+    "correct": 11,
+    "critical": 3,
+    "wrong_value": 0,
+    "wrong_unit": 0,
+    "wrong_range": 0,
+    "invented_range": 0,
+    "invented_row": 3,
+    "unpaired": 3,
+    "duplicate": 0,
+    "miss_rows": 3,
+    "dropped_row": 3,
+    "null_value": 0,
+    "missing_unit": 0,
+    "missing_range": 0,
+    "review": 0,
+    "out_of_order": 0,
+    "abnormal_rows": 5,
+    "abnormal_critical": 0,
+    "failed": null,
+    "details": [
+     {
+      "label": {
+       "test_name": "MCV",
+       "value": "94.9",
+       "unit": "fL",
+       "reference_range": "83.0 - 101.0"
+      },
+      "issues": [
+       "dropped_row"
+      ],
+      "status": "miss"
+     },
+     {
+      "label": {
+       "test_name": "MCH",
+       "value": "28.3",
+       "unit": "pg",
+       "reference_range": "27.0 - 32.0"
+      },
+      "issues": [
+       "dropped_row"
+      ],
+      "status": "miss"
+     },
+     {
+      "label": {
+       "test_name": "MCHC",
+       "value": "33.5",
+       "unit": "g/dL",
+       "reference_range": "31.5 - 34.5"
+      },
+      "issues": [
+       "dropped_row"
+      ],
+      "status": "miss"
+     },
+     {
+      "pred": {
+       "test_name": "Mean Corpuscular Volume (MCV)",
+       "value": 94.9,
+       "unit": "fL",
+       "reference_range": "83.0 - 101.0",
+       "status": "normal"
+      },
+      "issues": [
+       "invented_row"
+      ],
+      "status": "critical",
+      "note": "unpaired"
+     },
+     {
+      "pred": {
+       "test_name": "Mean Corpuscular Haemoglobin (MCH)",
+       "value": 28.3,
+       "unit": "pg",
+       "reference_range": "27.0 - 32.0",
+       "status": "normal"
+      },
+      "issues": [
+       "invented_row"
+      ],
+      "status": "critical",
+      "note": "unpaired"
+     },
+     {
+      "pred": {
+       "test_name": "Mean Corpuscular Haemoglobin Concentration (MCHC)",
+       "value": 33.5,
+       "unit": "g/dL",
+       "reference_range": "31.5 - 34.5",
+       "status": "normal"
+      },
+      "issues": [
+       "invented_row"
+      ],
+      "status": "critical",
+      "note": "unpaired"
+     }
+    ],
+    "row_status": [
+     "correct",
+     "correct",
+     "correct",
+     "miss",
+     "miss",
+     "miss",
+     "correct",
+     "correct",
+     "correct",
+     "correct",
+     "correct",
+     "correct",
+     "correct",
+     "correct"
+    ]
+   },
+   "06": {
+    "rows": 12,
+    "correct": 0,
+    "critical": 7,
+    "wrong_value": 2,
+    "wrong_unit": 0,
+    "wrong_range": 0,
+    "invented_range": 0,
+    "invented_row": 5,
+    "unpaired": 5,
+    "duplicate": 0,
+    "miss_rows": 5,
+    "dropped_row": 5,
+    "null_value": 1,
+    "missing_unit": 0,
+    "missing_range": 0,
+    "review": 5,
+    "out_of_order": 0,
+    "abnormal_rows": 3,
+    "abnormal_critical": 1,
+    "failed": null,
+    "details": [
+     {
+      "label": {
+       "test_name": "Colour",
+       "value": "Dark Yellow",
+       "unit": null,
+       "reference_range": "Pale Yellow"
+      },
+      "pred": {
+       "test_name": "Urine Colour",
+       "value": null,
+       "unit": "N/A",
+       "reference_range": "Pale Yellow",
+       "status": "abnormal"
+      },
+      "pairing": "exact",
+      "issues": [
+       "null_value",
+       "review_unit_added"
+      ],
+      "status": "review"
+     },
+     {
+      "label": {
+       "test_name": "pH",
+       "value": "6.5",
+       "unit": null,
+       "reference_range": "5.0 - 8.0"
+      },
+      "pred": {
+       "test_name": "Urine pH",
+       "value": 6.5,
+       "unit": "pH",
+       "reference_range": "5.0 - 8.0",
+       "status": "normal"
+      },
+      "pairing": "exact",
+      "issues": [
+       "review_unit_added"
+      ],
+      "status": "review"
+     },
+     {
+      "label": {
+       "test_name": "Specific Gravity",
+       "value": "1.020",
+       "unit": null,
+       "reference_range": "1.005 - 1.030"
+      },
+      "pred": {
+       "test_name": "Urine Specific Gravity",
+       "value": 1.02,
+       "unit": "g/mL",
+       "reference_range": "1.005 - 1.030",
+       "status": "normal"
+      },
+      "pairing": "fuzzy",
+      "issues": [
+       "review_fuzzy",
+       "review_unit_added"
+      ],
+      "status": "review"
+     },
+     {
+      "label": {
+       "test_name": "Sugar",
+       "value": "Present (+)",
+       "unit": null,
+       "reference_range": "Negative"
+      },
+      "pred": {
+       "test_name": "Urine Sugar",
+       "value": 1.0,
+       "unit": "N/A",
+       "reference_range": "Negative",
+       "status": "high"
+      },
+      "pairing": "exact",
+      "issues": [
+       "wrong_value",
+       "review_unit_added"
+      ],
+      "status": "critical"
+     },
+     {
+      "label": {
+       "test_name": "Ketones",
+       "value": "Negative",
+       "unit": null,
+       "reference_range": "Negative"
+      },
+      "pred": {
+       "test_name": "Urine Ketones",
+       "value": 0.0,
+       "unit": "N/A",
+       "reference_range": "Negative",
+       "status": "normal"
+      },
+      "pairing": "exact",
+      "issues": [
+       "wrong_value",
+       "review_unit_added"
+      ],
+      "status": "critical"
+     },
+     {
+      "label": {
+       "test_name": "Erythrocytes",
+       "value": "1-2",
+       "unit": "/hpf",
+       "reference_range": "Nil"
+      },
+      "pred": {
+       "test_name": "Urine Erythrocytes",
+       "value": 1.5,
+       "unit": "/hpf",
+       "reference_range": "0 - 0 /hpf",
+       "status": "high"
+      },
+      "pairing": "fuzzy",
+      "issues": [
+       "review_fuzzy",
+       "wrong_value",
+       "review_range_format"
+      ],
+      "status": "review"
+     },
+     {
+      "label": {
+       "test_name": "Squamous Epithelial Cells",
+       "value": "1-2",
+       "unit": "/hpf",
+       "reference_range": "0 - 5"
+      },
+      "pred": {
+       "test_name": "Urine Squamous Epithelial Cells",
+       "value": 1.5,
+       "unit": "/hpf",
+       "reference_range": "0 - 5 /hpf",
+       "status": "normal"
+      },
+      "pairing": "fuzzy",
+      "issues": [
+       "review_fuzzy",
+       "wrong_value"
+      ],
+      "status": "review"
+     },
+     {
+      "label": {
+       "test_name": "Clarity",
+       "value": "Clear",
+       "unit": null,
+       "reference_range": "Clear"
+      },
+      "issues": [
+       "dropped_row"
+      ],
+      "status": "miss"
+     },
+     {
+      "label": {
+       "test_name": "Albumin",
+       "value": "Negative",
+       "unit": null,
+       "reference_range": "Negative"
+      },
+      "issues": [
+       "dropped_row"
+      ],
+      "status": "miss"
+     },
+     {
+      "label": {
+       "test_name": "Leucocytes",
+       "value": "2-3",
+       "unit": "/hpf",
+       "reference_range": "0 - 5"
+      },
+      "issues": [
+       "dropped_row"
+      ],
+      "status": "miss"
+     },
+     {
+      "label": {
+       "test_name": "CRP",
+       "value": "< 0.5",
+       "unit": "mg/L",
+       "reference_range": "< 5.0"
+      },
+      "issues": [
+       "dropped_row"
+      ],
+      "status": "miss"
+     },
+     {
+      "label": {
+       "test_name": "E.S.R. (Westergren)",
+       "value": "13",
+       "unit": "mm/hr",
+       "reference_range": "0 - 15"
+      },
+      "issues": [
+       "dropped_row"
+      ],
+      "status": "miss"
+     },
+     {
+      "pred": {
+       "test_name": "Urine Clarity",
+       "value": null,
+       "unit": "N/A",
+       "reference_range": "Clear",
+       "status": "normal"
+      },
+      "issues": [
+       "invented_row"
+      ],
+      "status": "critical",
+      "note": "unpaired"
+     },
+     {
+      "pred": {
+       "test_name": "Urine Albumin",
+       "value": 0.0,
+       "unit": "N/A",
+       "reference_range": "Negative",
+       "status": "normal"
+      },
+      "issues": [
+       "invented_row"
+      ],
+      "status": "critical",
+      "note": "unpaired"
+     },
+     {
+      "pred": {
+       "test_name": "Urine Leucocytes",
+       "value": 2.5,
+       "unit": "/hpf",
+       "reference_range": "0 - 5 /hpf",
+       "status": "normal"
+      },
+      "issues": [
+       "invented_row"
+      ],
+      "status": "critical",
+      "note": "unpaired"
+     },
+     {
+      "pred": {
+       "test_name": "C-Reactive Protein (CRP)",
+       "value": 0.5,
+       "unit": "mg/L",
+       "reference_range": "< 5.0 mg/L",
+       "status": "normal"
+      },
+      "issues": [
+       "invented_row"
+      ],
+      "status": "critical",
+      "note": "unpaired"
+     },
+     {
+      "pred": {
+       "test_name": "Erythrocyte Sedimentation Rate (ESR)",
+       "value": 13.0,
+       "unit": "mm/hr",
+       "reference_range": "0 - 15 mm/hr",
+       "status": "normal"
+      },
+      "issues": [
+       "invented_row"
+      ],
+      "status": "critical",
+      "note": "unpaired"
+     }
+    ],
+    "row_status": [
+     "review",
+     "miss",
+     "review",
+     "review",
+     "miss",
+     "critical",
+     "critical",
+     "miss",
+     "review",
+     "review",
+     "miss",
+     "miss"
+    ]
+   },
+   "08": {
+    "rows": 6,
+    "correct": 4,
+    "critical": 1,
+    "wrong_value": 0,
+    "wrong_unit": 0,
+    "wrong_range": 0,
+    "invented_range": 0,
+    "invented_row": 1,
+    "unpaired": 1,
+    "duplicate": 0,
+    "miss_rows": 1,
+    "dropped_row": 1,
+    "null_value": 0,
+    "missing_unit": 0,
+    "missing_range": 0,
+    "review": 1,
+    "out_of_order": 0,
+    "abnormal_rows": 0,
+    "abnormal_critical": 0,
+    "failed": null,
+    "details": [
+     {
+      "label": {
+       "test_name": "Chol/HDL",
+       "value": "4.3",
+       "unit": null,
+       "reference_range": "< 5.0"
+      },
+      "pred": {
+       "test_name": "Cholesterol/HDL Ratio",
+       "value": 4.3,
+       "unit": "ratio",
+       "reference_range": "< 5.0",
+       "status": "normal"
+      },
+      "pairing": "exact",
+      "issues": [
+       "review_unit_added"
+      ],
+      "status": "review"
+     },
+     {
+      "label": {
+       "test_name": "LDL-C (Direct)",
+       "value": "73",
+       "unit": "mg/dL",
+       "reference_range": "< 100"
+      },
+      "issues": [
+       "dropped_row"
+      ],
+      "status": "miss"
+     },
+     {
+      "pred": {
+       "test_name": "LDL Cholesterol (Direct)",
+       "value": 73.0,
+       "unit": "mg/dL",
+       "reference_range": "< 100",
+       "status": "normal"
+      },
+      "issues": [
+       "invented_row"
+      ],
+      "status": "critical",
+      "note": "unpaired"
+     }
+    ],
+    "row_status": [
+     "correct",
+     "correct",
+     "correct",
+     "miss",
+     "correct",
+     "review"
+    ]
+   },
+   "09": {
+    "rows": 14,
+    "correct": 14,
+    "critical": 0,
+    "wrong_value": 0,
+    "wrong_unit": 0,
+    "wrong_range": 0,
+    "invented_range": 0,
+    "invented_row": 0,
+    "unpaired": 0,
+    "duplicate": 0,
+    "miss_rows": 0,
+    "dropped_row": 0,
+    "null_value": 0,
+    "missing_unit": 0,
+    "missing_range": 0,
+    "review": 0,
+    "out_of_order": 0,
+    "abnormal_rows": 3,
+    "abnormal_critical": 0,
+    "failed": null,
+    "details": [],
+    "row_status": [
+     "correct",
+     "correct",
+     "correct",
+     "correct",
+     "correct",
+     "correct",
+     "correct",
+     "correct",
+     "correct",
+     "correct",
+     "correct",
+     "correct",
+     "correct",
+     "correct"
+    ]
+   },
+   "11": {
+    "rows": 54,
+    "correct": 30,
+    "critical": 0,
+    "wrong_value": 0,
+    "wrong_unit": 0,
+    "wrong_range": 0,
+    "invented_range": 0,
+    "invented_row": 0,
+    "unpaired": 0,
+    "duplicate": 0,
+    "miss_rows": 24,
+    "dropped_row": 24,
+    "null_value": 0,
+    "missing_unit": 0,
+    "missing_range": 0,
+    "review": 0,
+    "out_of_order": 0,
+    "abnormal_rows": 9,
+    "abnormal_critical": 0,
+    "failed": null,
+    "details": [
+     {
+      "label": {
+       "test_name": "Urea",
+       "value": "42",
+       "unit": "mg/dL",
+       "reference_range": "15 - 40"
+      },
+      "issues": [
+       "dropped_row"
+      ],
+      "status": "miss"
+     },
+     {
+      "label": {
+       "test_name": "Creatinine",
+       "value": "1.00",
+       "unit": "mg/dL",
+       "reference_range": "0.70 - 1.30"
+      },
+      "issues": [
+       "dropped_row"
+      ],
+      "status": "miss"
+     },
+     {
+      "label": {
+       "test_name": "Serum Uric Acid",
+       "value": "6.5",
+       "unit": "mg/dL",
+       "reference_range": "3.5 - 7.2"
+      },
+      "issues": [
+       "dropped_row"
+      ],
+      "status": "miss"
+     },
+     {
+      "label": {
+       "test_name": "Sodium (Na+)",
+       "value": "142",
+       "unit": "mmol/L",
+       "reference_range": "136 - 146"
+      },
+      "issues": [
+       "dropped_row"
+      ],
+      "status": "miss"
+     },
+     {
+      "label": {
+       "test_name": "Potassium (K+)",
+       "value": "3.9",
+       "unit": "mmol/L",
+       "reference_range": "3.5 - 5.1"
+      },
+      "issues": [
+       "dropped_row"
+      ],
+      "status": "miss"
+     },
+     {
+      "label": {
+       "test_name": "Chloride (Cl-)",
+       "value": "100",
+       "unit": "mmol/L",
+       "reference_range": "98 - 107"
+      },
+      "issues": [
+       "dropped_row"
+      ],
+      "status": "miss"
+     },
+     {
+      "label": {
+       "test_name": "Triiodothyronine (T3)",
+       "value": "186",
+       "unit": "ng/dL",
+       "reference_range": "80 - 200"
+      },
+      "issues": [
+       "dropped_row"
+      ],
+      "status": "miss"
+     },
+     {
+      "label": {
+       "test_name": "Thyroxine (T4)",
+       "value": "13.2",
+       "unit": "µg/dL",
+       "reference_range": "5.1 - 14.1"
+      },
+      "issues": [
+       "dropped_row"
+      ],
+      "status": "miss"
+     },
+     {
+      "label": {
+       "test_name": "Thyroid Stimulating Hormone",
+       "value": "1.45",
+       "unit": "µIU/mL",
+       "reference_range": "0.27 - 4.20"
+      },
+      "issues": [
+       "dropped_row"
+      ],
+      "status": "miss"
+     },
+     {
+      "label": {
+       "test_name": "Glycosylated Haemoglobin (HbA1c)",
+       "value": "3.6",
+       "unit": "%",
+       "reference_range": "< 5.7"
+      },
+      "issues": [
+       "dropped_row"
+      ],
+      "status": "miss"
+     },
+     {
+      "label": {
+       "test_name": "Glucose - Fasting",
+       "value": "94",
+       "unit": "mg/dL",
+       "reference_range": "70 - 100"
+      },
+      "issues": [
+       "dropped_row"
+      ],
+      "status": "miss"
+     },
+     {
+      "label": {
+       "test_name": "Glucose - PP",
+       "value": "80",
+       "unit": "mg/dL",
+       "reference_range": "70 - 140"
+      },
+      "issues": [
+       "dropped_row"
+      ],
+      "status": "miss"
+     },
+     {
+      "label": {
+       "test_name": "25-Hydroxy Vitamin D",
+       "value": "118.8",
+       "unit": "ng/mL",
+       "reference_range": "30.0 - 100.0"
+      },
+      "issues": [
+       "dropped_row"
+      ],
+      "status": "miss"
+     },
+     {
+      "label": {
+       "test_name": "Cyanocobalamin (B12)",
+       "value": "498",
+       "unit": "pg/mL",
+       "reference_range": "197 - 771"
+      },
+      "issues": [
+       "dropped_row"
+      ],
+      "status": "miss"
+     },
+     {
+      "label": {
+       "test_name": "Color",
+       "value": "Pale Yellow",
+       "unit": null,
+       "reference_range": "Pale Yellow"
+      },
+      "issues": [
+       "dropped_row"
+      ],
+      "status": "miss"
+     },
+     {
+      "label": {
+       "test_name": "Appearance",
+       "value": "Clear",
+       "unit": null,
+       "reference_range": "Clear"
+      },
+      "issues": [
+       "dropped_row"
+      ],
+      "status": "miss"
+     },
+     {
+      "label": {
+       "test_name": "Reaction (pH)",
+       "value": "6.0",
+       "unit": null,
+       "reference_range": "5.0 - 8.0"
+      },
+      "issues": [
+       "dropped_row"
+      ],
+      "status": "miss"
+     },
+     {
+      "label": {
+       "test_name": "Sp. Gravity",
+       "value": "1.015",
+       "unit": null,
+       "reference_range": "1.005 - 1.030"
+      },
+      "issues": [
+       "dropped_row"
+      ],
+      "status": "miss"
+     },
+     {
+      "label": {
+       "test_name": "Urine Protein",
+       "value": "Negative",
+       "unit": null,
+       "reference_range": "Negative"
+      },
+      "issues": [
+       "dropped_row"
+      ],
+      "status": "miss"
+     },
+     {
+      "label": {
+       "test_name": "Urine Glucose",
+       "value": "Negative",
+       "unit": null,
+       "reference_range": "Negative"
+      },
+      "issues": [
+       "dropped_row"
+      ],
+      "status": "miss"
+     },
+     {
+      "label": {
+       "test_name": "Ketone Bodies",
+       "value": "Negative",
+       "unit": null,
+       "reference_range": "Negative"
+      },
+      "issues": [
+       "dropped_row"
+      ],
+      "status": "miss"
+     },
+     {
+      "label": {
+       "test_name": "Pus Cells (WBC)",
+       "value": "8-10",
+       "unit": "/hpf",
+       "reference_range": "0 - 5"
+      },
+      "issues": [
+       "dropped_row"
+      ],
+      "status": "miss"
+     },
+     {
+      "label": {
+       "test_name": "RBC",
+       "value": "Nil",
+       "unit": "/hpf",
+       "reference_range": "Nil"
+      },
+      "issues": [
+       "dropped_row"
+      ],
+      "status": "miss"
+     },
+     {
+      "label": {
+       "test_name": "Epithelial Cells",
+       "value": "3-4",
+       "unit": "/hpf",
+       "reference_range": "0 - 5"
+      },
+      "issues": [
+       "dropped_row"
+      ],
+      "status": "miss"
+     }
+    ],
+    "row_status": [
+     "correct",
+     "correct",
+     "correct",
+     "correct",
+     "correct",
+     "correct",
+     "correct",
+     "correct",
+     "correct",
+     "correct",
+     "correct",
+     "correct",
+     "correct",
+     "correct",
+     "correct",
+     "correct",
+     "correct",
+     "correct",
+     "correct",
+     "correct",
+     "correct",
+     "correct",
+     "correct",
+     "correct",
+     "correct",
+     "correct",
+     "correct",
+     "correct",
+     "correct",
+     "correct",
+     "miss",
+     "miss",
+     "miss",
+     "miss",
+     "miss",
+     "miss",
+     "miss",
+     "miss",
+     "miss",
+     "miss",
+     "miss",
+     "miss",
+     "miss",
+     "miss",
+     "miss",
+     "miss",
+     "miss",
+     "miss",
+     "miss",
+     "miss",
+     "miss",
+     "miss",
+     "miss",
+     "miss"
+    ]
+   }
+  }
+ ],
+ "totals": [
+  {
+   "rows": 138,
+   "correct": 86,
+   "critical": 20,
+   "wrong_value": 2,
+   "wrong_unit": 0,
+   "wrong_range": 0,
+   "invented_range": 3,
+   "invented_row": 15,
+   "unpaired": 15,
+   "duplicate": 0,
+   "miss_rows": 39,
+   "dropped_row": 39,
+   "null_value": 1,
+   "missing_unit": 0,
+   "missing_range": 0,
+   "review": 8,
+   "out_of_order": 0,
+   "abnormal_rows": 29,
+   "abnormal_critical": 1,
+   "failed": 0,
+   "rate": 0.6231884057971014,
+   "macro_rate": 0.6226438492063492
+  },
+  {
+   "rows": 138,
+   "correct": 86,
+   "critical": 20,
+   "wrong_value": 2,
+   "wrong_unit": 0,
+   "wrong_range": 0,
+   "invented_range": 3,
+   "invented_row": 15,
+   "unpaired": 15,
+   "duplicate": 0,
+   "miss_rows": 39,
+   "dropped_row": 39,
+   "null_value": 1,
+   "missing_unit": 0,
+   "missing_range": 0,
+   "review": 8,
+   "out_of_order": 0,
+   "abnormal_rows": 29,
+   "abnormal_critical": 1,
+   "failed": 0,
+   "rate": 0.6231884057971014,
+   "macro_rate": 0.6226438492063492
+  },
+  {
+   "rows": 138,
+   "correct": 86,
+   "critical": 20,
+   "wrong_value": 2,
+   "wrong_unit": 0,
+   "wrong_range": 0,
+   "invented_range": 3,
+   "invented_row": 15,
+   "unpaired": 15,
+   "duplicate": 0,
+   "miss_rows": 39,
+   "dropped_row": 39,
+   "null_value": 1,
+   "missing_unit": 0,
+   "missing_range": 0,
+   "review": 8,
+   "out_of_order": 0,
+   "abnormal_rows": 29,
+   "abnormal_critical": 1,
+   "failed": 0,
+   "rate": 0.6231884057971014,
+   "macro_rate": 0.6226438492063492
+  }
+ ]
+}

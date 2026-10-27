@@ -40,3 +40,30 @@ python extract.py <path-to-report>
 If your version needs different setup (other packages, other environment variables), say so at the top of your README.
 
 For setup errors: a missing `pdftoppm` means Poppler is not on `PATH`; HTTP 401/403 means check key/project access, 404 means check model availability, and 429 means check quota. For a connection/TLS error, check network access before retrying. Never disable TLS verification. Keep access troubleshooting within the timebox; document constraints and any alternative you use.
+
+## Decision log
+
+| # | When | Change | Why | Verified how |
+|---|---|---|---|---|
+| 1 | After the baseline run (`a78d9b5`), **before any extractor change** | **Eval name matching** (`872bbd7`): `Full Name (ABBR)` falls back to the abbreviation only when neither the whole name nor the full name is recognised; `Urine X` pairs only with a bare label `X`, never `Serum X`; `N/A`/`NA`/`-`/`none` as a unit means no unit. | The baseline prompt says "use the standard medical name", so it renames tests (MCV → `Mean Corpuscular Volume (MCV)`). The eval scored each rename as a dropped row **plus** an invented row, so the score measured naming, not extraction. A doctor cares whether the value is right, not what the row is called. I had predicted the renaming in `PLAN.md`. Fixing the eval before touching the extractor means the same eval scores the baseline and every fix, so comparisons stay fair. | 10 new tests: abbreviation only when the full name is unknown (`Pus Cells (WBC)` stays urine, never blood WBC); `Urine Albumin` never pairs with `Serum Albumin`; `N/A` unit; report_06's real errors still count. The existing RBC blood/urine swap test still passes. Breaking each rule makes at least one test fail. Saved baseline outputs re-scored with **no API calls**. |
+
+### Baseline score before and after the eval fix
+
+Same saved outputs (`runs/baseline`, `gemini-3.1-flash-lite`, 8 tuning reports, 3 repeats). All three repeats are byte-identical, so the numbers have no spread.
+
+| Metric | Before (`runs/baseline/score_before_name_fix.md`) | After (`runs/baseline/score.md`) |
+|---|---|---|
+| Correct-row rate (pooled) | 62.3% | **71.7%** |
+| Correct-row rate (mean of reports) | 62.3% | 76.2% |
+| Critical errors | 20 | **10** |
+| – wrong value | 2 | 7 |
+| – invented range | 3 | 3 |
+| – invented row | 15 | 0 |
+| Dropped rows | 39 | 24 |
+| Needs review | 8 | 3 |
+| Critical errors on abnormal rows | 1 | 2 |
+
+What moved and why:
+- **13 renamed rows now score correct**: MCV, MCH and MCHC in reports 01 and 05; ALP, AST and ALT in 02; FBS and PPBS in 03; ESR in 06; LDL-C in 08.
+- **Real errors were hidden and are now counted**: wrong values went up from 2 to 7. In report_06, `Albumin` Negative → `0.0`, `Leucocytes` `2-3` → `2.5`, `Erythrocytes` and `Squamous Epithelial Cells` `1-2` → `1.5`, and `CRP` `< 0.5` → `0.5` were previously split into a dropped row plus an invented row. `Sugar` `Present (+)` → `1.0` and `Ketones` Negative → `0.0` were already counted and still are.
+- **Unchanged**: the 3 invented ranges (report_03) and the 24 dropped rows on report_11 page 2. These are extraction failures, not naming.
