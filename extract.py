@@ -24,11 +24,11 @@ PROMPT = """You are an expert at reading medical lab reports.
 Look at this lab report and extract every test result from it.
 
 Return JSON in exactly this format:
-{"tests": [{"test_name": "...", "value": 0.0, "unit": "...", "reference_range": "...", "status": "normal"}]}
+{"tests": [{"test_name": "...", "value": "...", "unit": "...", "reference_range": "...", "status": "normal"}]}
 
 Rules:
 - Use the standard medical name for each test.
-- value must be a number.
+- value is a string, copied exactly as printed: keep words (e.g. Negative), symbols (e.g. < or >) and ranges (e.g. 2-3) as they appear.
 - If a reference range is missing from the report, fill in the standard reference range for that test.
 - status is "normal", "high" or "low", based on the value and the reference range.
 - Be thorough. Do not miss any tests.
@@ -93,11 +93,13 @@ def parse(text: str) -> list[dict]:
         return []
 
 
-def to_number(value):
-    try:
-        return float(value)
-    except (TypeError, ValueError):
+def as_printed(value):
+    """Keep the value as read; the schema allows strings, so text like "Negative" or "< 0.5" survives."""
+    if value is None or (isinstance(value, str) and not value.strip()):
         return None
+    if isinstance(value, (int, float)) and not isinstance(value, bool):
+        return value
+    return str(value).strip()
 
 
 def clean(tests: list[dict]) -> list[dict]:
@@ -105,7 +107,7 @@ def clean(tests: list[dict]) -> list[dict]:
     for t in tests:
         out.append({
             "test_name": str(t.get("test_name", "")).strip(),
-            "value": to_number(t.get("value")),
+            "value": as_printed(t.get("value")),
             "unit": t.get("unit") or None,
             "reference_range": t.get("reference_range") or None,
             "status": t.get("status"),
