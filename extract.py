@@ -37,6 +37,11 @@ Rules:
 MEDIA_TYPES = {".jpg": "image/jpeg", ".jpeg": "image/jpeg", ".png": "image/png"}
 RETRY_CODES = {429, 500, 502, 503, 504}  # rate limit and server overload: worth waiting for
 BACKOFF = (5, 15, 45)  # seconds before each retry
+# Measured on 144 successful calls: median 12 s, p95 73 s, max 169 s; 2% took over 90 s.
+READ_TIMEOUT_S = 90  # per request; a slower call is retried rather than waited on
+TOTAL_BUDGET_S = 300  # whole run, retries and waits included
+MIN_ATTEMPT_S = 20  # don't start a request with less time than this left
+START = time.monotonic()
 
 
 def retry_after(error):
@@ -76,23 +81,28 @@ def call_model(images: list[tuple[str, str]]) -> str:
         f"https://generativelanguage.googleapis.com/v1beta/models/{MODEL}:generateContent",
         data=json.dumps(body).encode(), headers={"x-goog-api-key": key, "Content-Type": "application/json"},
     )
+    deadline = START + TOTAL_BUDGET_S
     for attempt in range(len(BACKOFF) + 1):
-        last = attempt == len(BACKOFF)
+        timeout = min(READ_TIMEOUT_S, deadline - time.monotonic())
         try:
-            with urllib.request.urlopen(request, timeout=180) as response:
+            with urllib.request.urlopen(request, timeout=timeout) as response:
                 result = json.load(response)
             break
         except urllib.error.HTTPError as error:
-            if error.code not in RETRY_CODES or last:
+            if error.code not in RETRY_CODES:
                 raise RuntimeError(f"Gemini HTTP {error.code}; check API access, model and quota. "
                                    "See README.md.") from None
-            reason, wait = f"http_{error.code}", retry_after(error) or BACKOFF[attempt]
+            reason, what = f"http_{error.code}", f"HTTP {error.code}"
+            wait = retry_after(error) or BACKOFF[min(attempt, len(BACKOFF) - 1)]
         except (urllib.error.URLError, TimeoutError, ConnectionError) as error:
-            if last:
-                raise RuntimeError("Gemini connection failed or timed out; check network/TLS access and retry. "
-                                   "See README.md.") from None
             timed_out = isinstance(error, TimeoutError) or "timed out" in str(error)
-            reason, wait = "timeout" if timed_out else "connection", BACKOFF[attempt]
+            reason, what = ("timeout", "request timed out") if timed_out else ("connection", "connection failed")
+            wait = BACKOFF[min(attempt, len(BACKOFF) - 1)]
+        out_of_time = time.monotonic() + wait + MIN_ATTEMPT_S > deadline
+        if attempt == len(BACKOFF) or out_of_time:
+            why = f"time budget of {TOTAL_BUDGET_S} s used" if out_of_time else "retries used up"
+            raise RuntimeError(f"Gemini {what} on attempt {attempt + 1}; gave up ({why}). "
+                               "Check API access, network and quota. See README.md.") from None
         print("RETRY " + json.dumps({"attempt": attempt + 1, "reason": reason, "wait_s": wait}), file=sys.stderr)
         time.sleep(wait)
     usage = result.get("usageMetadata", {})

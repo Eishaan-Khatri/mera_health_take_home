@@ -631,7 +631,8 @@ def main():
     r.add_argument("--reports", help="comma list, e.g. 01,02. Default: the 8 tuning reports. "
                                      "Held-out 04,07,10,12 run only when listed here.")
     r.add_argument("--model", help="sets GEMINI_MODEL for the extractor")
-    r.add_argument("--timeout", type=float, default=240)
+    r.add_argument("--timeout", type=float, default=330,
+                   help="seconds before the runner kills one extractor run; above extract.py's own 300 s cap")
     r.add_argument("--backoff", default="10,30,60", help="seconds to wait before each retry")
     r.add_argument("--rpm", type=int, default=10)
     r.add_argument("--rpd", type=int, default=400)
