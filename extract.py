@@ -24,13 +24,12 @@ PROMPT = """You are an expert at reading medical lab reports.
 Look at this lab report and extract every test result from it.
 
 Return JSON in exactly this format:
-{"tests": [{"test_name": "...", "value": "...", "unit": "...", "reference_range": "...", "status": "normal"}]}
+{"tests": [{"test_name": "...", "value": "...", "unit": "...", "reference_range": "..."}]}
 
 Rules:
 - Use the standard medical name for each test.
 - value is a string, copied exactly as printed: keep words (e.g. Negative), symbols (e.g. < or >) and ranges (e.g. 2-3) as they appear.
 - reference_range is copied as printed for that test. If the report prints no range for it, use null. Never fill in a standard range.
-- status is "normal", "high" or "low", based on the value and the reference range.
 - Be thorough. Do not miss any tests.
 """
 
@@ -102,15 +101,47 @@ def as_printed(value):
     return str(value).strip()
 
 
+NUMBER = r"\d[\d,]*(?:\.\d+)?"
+
+
+def to_float(text):
+    return float(text.replace(",", ""))
+
+
+def compute_status(value, reference_range):
+    """'low' / 'normal' / 'high' from the value and the printed range; None if either isn't numeric."""
+    if isinstance(value, bool) or value is None or reference_range is None:
+        return None
+    if isinstance(value, (int, float)):
+        v = float(value)
+    elif re.fullmatch(NUMBER, str(value).strip()):
+        v = to_float(str(value).strip())
+    else:
+        return None  # text like "Negative", comparators like "< 0.5", intervals like "2-3"
+    rng = str(reference_range).strip()
+    m = re.match(rf"({NUMBER})\s*[-–]\s*({NUMBER})", rng)
+    if m:
+        lo, hi = to_float(m.group(1)), to_float(m.group(2))
+        return "low" if v < lo else "high" if v > hi else "normal"
+    m = re.match(rf"(<=|>=|<|>|≤|≥)\s*({NUMBER})", rng)
+    if m:
+        op, bound = m.group(1), to_float(m.group(2))
+        if op in ("<", "<=", "≤"):
+            return "high" if (v >= bound if op == "<" else v > bound) else "normal"
+        return "low" if (v <= bound if op == ">" else v < bound) else "normal"
+    return None
+
+
 def clean(tests: list[dict]) -> list[dict]:
     out = []
     for t in tests:
+        value, reference_range = as_printed(t.get("value")), t.get("reference_range") or None
         out.append({
             "test_name": str(t.get("test_name", "")).strip(),
-            "value": as_printed(t.get("value")),
+            "value": value,
             "unit": t.get("unit") or None,
-            "reference_range": t.get("reference_range") or None,
-            "status": t.get("status"),
+            "reference_range": reference_range,
+            "status": compute_status(value, reference_range),
         })
     return out
 
