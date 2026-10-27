@@ -128,4 +128,4 @@ Eval output: [baseline](runs/baseline/score.md) and [final](runs/fix7_timeouts_e
 
 I also checked by hand every root-cause line, every gold row against its page, and each fix's diff before it ran.
 
-**Transcripts:** to be added under `transcripts/`, unedited apart from redacted API keys.
+**Transcripts:** [`transcripts/session-e81aa3bc-mera-take-home.zip`](transcripts/), the main Claude Code session exported from the desktop app, unedited except that the three API keys are replaced by `[REDACTED_API_KEY]` (all three are revoked).
