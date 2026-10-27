@@ -73,6 +73,11 @@ def name_key(name):
         full, abbr = clean_name(m.group(1)), clean_name(m.group(2))
         if full in NAME_KEY:
             return NAME_KEY[full]
+        if full.startswith("urine "):
+            # 'Urine Pus Cells (WBC)': use the rest of the full name, never the abbreviation,
+            # which may name the blood test (WBC) and break the urine/blood rule
+            rest = full[len("urine "):]
+            return NAME_KEY.get(rest, s)
         if abbr in NAME_KEY:
             return NAME_KEY[abbr]
     return s

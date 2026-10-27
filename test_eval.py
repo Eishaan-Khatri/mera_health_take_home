@@ -370,6 +370,9 @@ class NameMatching(unittest.TestCase):
 
     def test_urine_prefix_never_maps_to_blood(self):
         k = ev.name_key
+        # found by the no_range_rule ablation: the abbreviation fallback mapped this to blood WBC
+        self.assertEqual(k("Urine Pus Cells (WBC)"), "urine_wbc")
+        self.assertNotEqual(k("Urine Pus Cells (WBC)"), k("Total Leucocyte Count"))
         self.assertNotEqual(k("Urine Albumin"), k("Serum Albumin"))
         self.assertNotEqual(k("Urine Glucose"), k("Glucose - Fasting"))
         self.assertNotEqual(k("Urine RBC"), k("RBC Count"))
