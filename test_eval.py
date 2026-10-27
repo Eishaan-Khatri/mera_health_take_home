@@ -374,6 +374,10 @@ FAKE = textwrap.dedent("""
         sys.exit("Gemini HTTP 429 GenerateRequestsPerDayPerProjectPerModel")
     if mode == "crash":
         raise ValueError("boom")
+    if mode == "micro":
+        print(json.dumps({"tests": [{"test_name": "T4", "value": "10.9", "unit": "\u00b5g/dL",
+                                     "reference_range": None}]}, ensure_ascii=False))
+        sys.exit(0)
     if mode == "always_429":
         sys.exit("Gemini HTTP 429; check API access, model and quota.")
     print('USAGE {"model": "gemini-3.1-flash-lite", "prompt_tokens": 1000, "output_tokens": 200, '
@@ -387,7 +391,7 @@ class Runner(unittest.TestCase):
         self.tmp = tempfile.TemporaryDirectory()
         d = Path(self.tmp.name)
         self.fake = d / "fake_extract.py"
-        self.fake.write_text(FAKE)
+        self.fake.write_text(FAKE, encoding="utf-8")
         self.pacer = ev.Pacer(d / "ledger.log", rpm=1000, rpd=1000, gap=0)
         self.env = dict(os.environ, FAKE_STATE=str(d / "state"))
 
@@ -403,6 +407,14 @@ class Runner(unittest.TestCase):
         self.assertEqual(meta["status"], "ok")
         self.assertEqual([a["error"] for a in meta["attempts"]], ["http_429", None])
         self.assertEqual(json.loads(out), {"tests": []})
+
+    def test_micro_sign_survives_the_pipe(self):
+        env = dict(self.env, FAKE_MODE="micro", PYTHONIOENCODING="utf-8")  # as run() sets it
+        out, meta = ev.run_one(self.fake, ev.report_path("12"), env, 30, [], self.pacer)
+        self.assertEqual(json.loads(out)["tests"][0]["unit"], "µg/dL")
+
+    def test_run_sets_utf8_for_the_extractor(self):
+        self.assertIn('env["PYTHONIOENCODING"] = "utf-8"', Path(ev.__file__).read_text(encoding="utf-8"))
 
     def test_usage_and_cost(self):
         _, meta = self.go("ok")

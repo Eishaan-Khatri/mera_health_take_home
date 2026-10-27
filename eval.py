@@ -545,6 +545,7 @@ def run(args):
                 env.setdefault(*(x.strip() for x in line.split("=", 1)))
     if args.model:
         env["GEMINI_MODEL"] = args.model
+    env["PYTHONIOENCODING"] = "utf-8"  # Windows pipes default to cp1252 and mangle µ; Linux is UTF-8 already
     pacer = Pacer(ROOT / "runs" / ".api_calls.log", args.rpm, args.rpd, args.gap)
     backoff = [float(x) for x in args.backoff.split(",")] if args.backoff else []
     out = ROOT / "runs" / args.tag
