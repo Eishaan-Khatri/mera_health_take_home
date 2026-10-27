@@ -60,9 +60,16 @@ def load_images(path: Path) -> list[tuple[str, str]]:
                                check=True, capture_output=True)
             except FileNotFoundError:
                 raise RuntimeError("Install Poppler (pdftoppm); see README.md.") from None
+            except subprocess.CalledProcessError as error:
+                raise RuntimeError(f"pdftoppm could not render {path}: "
+                                   f"{error.stderr.decode(errors='replace').strip()[:200]}") from None
             # pdftoppm zero-pads page numbers, so name order is page order
             pages = sorted(Path(directory).glob("page*.png"))
             return [("image/png", base64.standard_b64encode(p.read_bytes()).decode()) for p in pages]
+    if path.suffix.lower() not in MEDIA_TYPES:
+        raise RuntimeError(f"Unsupported file type {path.suffix!r}; expected .pdf, .jpg, .jpeg or .png.")
+    if not path.is_file():
+        raise RuntimeError(f"No such file: {path}")
     return [(MEDIA_TYPES[path.suffix.lower()], base64.standard_b64encode(path.read_bytes()).decode())]
 
 
@@ -215,4 +222,8 @@ if __name__ == "__main__":
     try:
         print(json.dumps(extract(Path(sys.argv[1])), indent=2, ensure_ascii=False))
     except RuntimeError as error:
-        sys.exit(str(error))
+        # Still schema-valid JSON on stdout, but the error field and exit code 1 say it's a failure,
+        # not a report with no tests.
+        print(json.dumps({"tests": [], "error": str(error)}, indent=2, ensure_ascii=False))
+        print(str(error), file=sys.stderr)
+        sys.exit(1)
