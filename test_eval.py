@@ -544,6 +544,11 @@ class Runner(unittest.TestCase):
         self.assertRegex(saved["git_commit"], r"^[0-9a-f]{40}$")
         self.assertEqual(saved["vocab_sha256"], hashlib.sha256(ev.VOCAB_PATH.read_bytes()).hexdigest())
 
+    def test_reports_dir_option(self):
+        self.assertEqual(ev.report_path("06").parent.name, "reports")
+        self.assertEqual(ev.report_path("06", "experiments/stress/blur").parts[-3:],
+                         ("stress", "blur", "report_06.pdf"))
+
     def test_held_out_not_in_default_set(self):
         self.assertFalse(set(ev.HELD_OUT) & set(ev.TUNING))
         self.assertEqual(sorted(ev.TUNING + ev.HELD_OUT), [f"{i:02d}" for i in range(1, 13)])

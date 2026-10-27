@@ -586,8 +586,8 @@ def run_one(extractor, report, env, timeout, backoff, pacer):
     return stdout, meta
 
 
-def report_path(rid):
-    hits = sorted((ROOT / "reports").glob(f"report_{rid}.*"))
+def report_path(rid, reports_dir="reports"):
+    hits = sorted((ROOT / reports_dir).glob(f"report_{rid}.*"))
     if not hits:
         raise SystemExit(f"no report file for {rid}")
     return hits[0]
@@ -609,7 +609,8 @@ def run(args):
         d = out / f"r{rep}"
         d.mkdir(parents=True, exist_ok=True)
         for rid in args.reports.split(",") if args.reports else TUNING:
-            stdout, meta = run_one(Path(args.extractor), report_path(rid), env, args.timeout, backoff, pacer)
+            stdout, meta = run_one(Path(args.extractor), report_path(rid, args.reports_dir), env, args.timeout, backoff,
+                                   pacer)
             if stdout is not None:
                 (d / f"report_{rid}.json").write_text(stdout, encoding="utf-8")
             (d / f"report_{rid}.meta.json").write_text(json.dumps(meta, indent=1), encoding="utf-8")
@@ -638,6 +639,8 @@ def main():
     r.add_argument("--rpd", type=int, default=400)
     r.add_argument("--gap", type=float, default=4, help="minimum seconds between calls")
     r.add_argument("--labels", default="labels")
+    r.add_argument("--reports-dir", default="reports",
+                   help="folder with report_XX.* files, e.g. experiments/stress/blur; labels still come from --labels")
     s = sub.add_parser("score")
     s.add_argument("run_dir")
     s.add_argument("--labels", default="labels")
