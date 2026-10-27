@@ -1,0 +1,36 @@
+{
+ "report": "report_08.jpg",
+ "model": "gemini-3.1-flash-lite",
+ "attempts": [
+  {
+   "n": 1,
+   "wall_s": 2.54,
+   "exit": 1,
+   "error": "http_5xx",
+   "extractor_retries": [],
+   "stderr_tail": "Gemini HTTP 503; check API access, model and quota. See README.md."
+  },
+  {
+   "n": 2,
+   "wall_s": 12.64,
+   "exit": 0,
+   "error": null,
+   "extractor_retries": []
+  }
+ ],
+ "status": "ok",
+ "usage": {
+  "model": "gemini-3.1-flash-lite",
+  "prompt_tokens": 1242,
+  "output_tokens": 376,
+  "thinking_tokens": null,
+  "total_tokens": 1618
+ },
+ "wall_s": 12.64,
+ "total_wall_s": 25.2,
+ "counts_after": {
+  "minute": 6,
+  "hour": 137,
+  "day": 137
+ }
+}
