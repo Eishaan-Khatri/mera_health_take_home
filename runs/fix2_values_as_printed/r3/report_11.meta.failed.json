@@ -1,0 +1,42 @@
+{
+ "report": "report_11.pdf",
+ "model": "gemini-3.1-flash-lite",
+ "attempts": [
+  {
+   "n": 1,
+   "wall_s": 18.76,
+   "exit": 1,
+   "error": "http_5xx",
+   "stderr_tail": "Gemini HTTP 503; check API access, model and quota. See README.md."
+  },
+  {
+   "n": 2,
+   "wall_s": 14.32,
+   "exit": 1,
+   "error": "http_5xx",
+   "stderr_tail": "Gemini HTTP 503; check API access, model and quota. See README.md."
+  },
+  {
+   "n": 3,
+   "wall_s": 4.55,
+   "exit": 1,
+   "error": "http_5xx",
+   "stderr_tail": "Gemini HTTP 503; check API access, model and quota. See README.md."
+  },
+  {
+   "n": 4,
+   "wall_s": 26.44,
+   "exit": 1,
+   "error": "http_5xx",
+   "stderr_tail": "Gemini HTTP 503; check API access, model and quota. See README.md."
+  }
+ ],
+ "status": "failed: http_5xx after 4 attempt(s)",
+ "usage": null,
+ "total_wall_s": 164.16,
+ "counts_after": {
+  "minute": 1,
+  "hour": 81,
+  "day": 131
+ }
+}

@@ -1,0 +1,28 @@
+{
+ "report": "report_11.pdf",
+ "model": "gemini-3.1-flash-lite",
+ "attempts": [
+  {
+   "n": 1,
+   "wall_s": 20.37,
+   "exit": 0,
+   "error": null
+  }
+ ],
+ "status": "ok",
+ "usage": {
+  "model": "gemini-3.1-flash-lite",
+  "prompt_tokens": 2370,
+  "output_tokens": 2510,
+  "thinking_tokens": null,
+  "total_tokens": 4880
+ },
+ "wall_s": 20.37,
+ "total_wall_s": 20.37,
+ "counts_after": {
+  "minute": 1,
+  "hour": 82,
+  "day": 132
+ },
+ "note": "re-run of this slot after the first run failed with 4x HTTP 503; see report_11.meta.failed.json"
+}

@@ -1,0 +1,48 @@
+{
+ "report": "report_01.pdf",
+ "model": "gemini-3.1-flash-lite",
+ "attempts": [
+  {
+   "n": 1,
+   "wall_s": 67.52,
+   "exit": 1,
+   "error": "http_5xx",
+   "stderr_tail": "Gemini HTTP 503; check API access, model and quota. See README.md."
+  },
+  {
+   "n": 2,
+   "wall_s": 9.58,
+   "exit": 1,
+   "error": "http_5xx",
+   "stderr_tail": "Gemini HTTP 503; check API access, model and quota. See README.md."
+  },
+  {
+   "n": 3,
+   "wall_s": 181.17,
+   "exit": 1,
+   "error": "timeout",
+   "stderr_tail": "    return self.read(nbytes, buffer)\r\n           ~~~~~~~~~^^^^^^^^^^^^^^^^\r\n  File \"C:\\Users\\eisha\\AppData\\Local\\Programs\\Python\\Python314\\Lib\\ssl.py\", line 1138, in read\r\n    return self._sslobj.read(len, buffer)\r\n           ~~~~~~~~~~~~~~~~~^^^^^^^^^^^^^\r\nTimeoutError: The read operation timed out"
+  },
+  {
+   "n": 4,
+   "wall_s": 68.99,
+   "exit": 0,
+   "error": null
+  }
+ ],
+ "status": "ok",
+ "usage": {
+  "model": "gemini-3.1-flash-lite",
+  "prompt_tokens": 1278,
+  "output_tokens": 909,
+  "thinking_tokens": null,
+  "total_tokens": 2187
+ },
+ "wall_s": 68.99,
+ "total_wall_s": 427.29,
+ "counts_after": {
+  "minute": 0,
+  "hour": 43,
+  "day": 93
+ }
+}
