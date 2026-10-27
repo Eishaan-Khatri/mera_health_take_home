@@ -29,7 +29,7 @@ Return JSON in exactly this format:
 Rules:
 - Use the standard medical name for each test.
 - value is a string, copied exactly as printed: keep words (e.g. Negative), symbols (e.g. < or >) and ranges (e.g. 2-3) as they appear.
-- If a reference range is missing from the report, fill in the standard reference range for that test.
+- reference_range is copied as printed for that test. If the report prints no range for it, use null. Never fill in a standard range.
 - status is "normal", "high" or "low", based on the value and the reference range.
 - Be thorough. Do not miss any tests.
 """
