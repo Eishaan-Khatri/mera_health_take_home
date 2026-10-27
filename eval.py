@@ -63,17 +63,42 @@ UNIT_KEY = {clean_unit(v): b for b, vs in VOCAB["unit_buckets"].items() for v in
 
 
 def name_key(name):
+    """Canonical test name. "Full Name (ABBR)" falls back to the abbreviation only when neither
+    the whole name nor the full name is recognised, so "Pus Cells (WBC)" stays urine_wbc."""
     s = clean_name(name)
-    return NAME_KEY.get(s, s)
+    if s in NAME_KEY:
+        return NAME_KEY[s]
+    m = re.fullmatch(r"(.*?)\s*\(([^()]*)\)\s*", str(name or ""))
+    if m:
+        full, abbr = clean_name(m.group(1)), clean_name(m.group(2))
+        if full in NAME_KEY:
+            return NAME_KEY[full]
+        if abbr in NAME_KEY:
+            return NAME_KEY[abbr]
+    return s
+
+
+def urine_base(name):
+    """For a name with a leading 'Urine', the canonical name of the rest ('Urine Leucocytes' ->
+    key of 'Leucocytes'). Used only to pair with a bare label name, never a 'Serum ...' one."""
+    m = re.match(r"\s*urine\s+(.+)", str(name or ""), re.I)
+    return name_key(m.group(1)) if m else None
+
+
+def is_bare(name):
+    return not re.match(r"\s*(serum|s\.)\s", str(name or ""), re.I)
 
 
 def unit_bucket(unit):
     return UNIT_KEY.get(clean_unit(unit))
 
 
+NO_UNIT = {"", "n/a", "na", "-", "none"}  # placeholders that mean "no unit printed"
+
+
 def split_unit(unit, rng):
     """Move a unit printed inside the range cell into the unit field (report_06 rule)."""
-    unit = unit if unit is None or str(unit).strip() else None
+    unit = None if unit is None or str(unit).strip().lower() in NO_UNIT else unit
     if rng is None or not str(rng).strip():
         return unit, None
     toks = str(rng).split()
@@ -231,6 +256,19 @@ def score_report(labels, output, failure=None):
         for j in pis[len(lis):]:
             s["review"] += 1
             flag(preds[j], "review_collision", "review", f"extra '{key}' row; unclear which label it belongs to")
+            used_p.add(j)
+
+    # 1b) 'Urine X' pairs with a leftover bare label 'X' of the same test, in printed order.
+    #     Never with 'Serum X': urine albumin is not serum albumin.
+    for j in range(len(preds)):
+        base = urine_base(preds[j].get("test_name"))
+        if j in used_p or base is None:
+            continue
+        i = next((i for i in range(len(labels)) if i not in used_l and lkeys[i] == base
+                  and is_bare(labels[i]["test_name"])), None)
+        if i is not None:
+            pairs.append((i, j, "exact"))
+            used_l.add(i)
             used_p.add(j)
 
     # 2) fuzzy fallback for leftovers: paired for review only, never counted correct

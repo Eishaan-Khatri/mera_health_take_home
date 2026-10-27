@@ -350,6 +350,75 @@ class Diff(unittest.TestCase):
             self.assertEqual(len(g["unstable"]), 14)
 
 
+class NameMatching(unittest.TestCase):
+    """Renames from the baseline prompt ("use the standard medical name") must not be scored as
+    a dropped row plus an invented row, and must never cross blood/urine."""
+
+    def test_full_name_with_abbreviation(self):
+        k = ev.name_key
+        self.assertEqual(k("Mean Corpuscular Volume (MCV)"), k("MCV"))
+        self.assertEqual(k("Mean Corpuscular Haemoglobin Concentration (MCHC)"), k("MCHC"))
+        self.assertEqual(k("Alkaline Phosphatase (ALP)"), k("ALP"))
+        self.assertEqual(k("Fasting Blood Sugar (FBS)"), k("FBS"))
+
+    def test_abbreviation_used_only_when_full_name_unknown(self):
+        k = ev.name_key
+        self.assertEqual(k("Total White Cells (WBC)"), k("Total WBC Count"))   # full name unknown -> ABBR
+        self.assertEqual(k("Pus Cells (WBC)"), "urine_wbc")                    # full name known -> no ABBR
+        self.assertNotEqual(k("Pus Cells (WBC)"), k("Total WBC Count"))
+        self.assertNotEqual(k("Pus Cells (Total WBC Count)"), k("Total WBC Count"))
+
+    def test_urine_prefix_never_maps_to_blood(self):
+        k = ev.name_key
+        self.assertNotEqual(k("Urine Albumin"), k("Serum Albumin"))
+        self.assertNotEqual(k("Urine Glucose"), k("Glucose - Fasting"))
+        self.assertNotEqual(k("Urine RBC"), k("RBC Count"))
+
+    def test_urine_prefixed_names_pair_with_bare_urine_labels(self):
+        t = copy.deepcopy(labels("06"))
+        for r in t[:10]:                       # the urine rows of report_06
+            r["test_name"] = "Urine " + r["test_name"]
+        self.assertEqual(counts(score("06", t)), {"correct": 12})
+
+    def test_urine_albumin_never_pairs_with_serum_albumin(self):
+        t = copy.deepcopy(labels("11"))
+        i = find(t, "Serum Albumin")
+        t[i]["test_name"] = "Urine Albumin"
+        s = score("11", t)
+        self.assertNotEqual(s["row_status"][i], "correct")
+        self.assertEqual(s["correct"], 52)    # Serum Albumin lost, Urine Protein now ambiguous
+
+    def test_urine_prefix_never_pairs_with_serum_label(self):
+        # report_02 has Serum Albumin and no urine tests, so only the Urine-prefix rule could pair it
+        t = copy.deepcopy(labels("02"))
+        i = find(t, "Serum Albumin")
+        t[i]["test_name"] = "Urine Albumin"
+        s = score("02", t)
+        self.assertEqual(s["row_status"][i], "miss")
+        self.assertEqual((s["dropped_row"], s["invented_row"]), (1, 1))
+
+    def test_na_unit_means_no_unit(self):
+        t = copy.deepcopy(labels("06"))
+        for r in t:
+            if r["unit"] is None:
+                r["unit"] = "N/A"
+        self.assertEqual(counts(score("06", t)), {"correct": 12})
+
+    def test_na_unit_where_a_unit_is_printed_is_missing_unit(self):
+        t = copy.deepcopy(labels("01"))
+        t[0]["unit"] = "N/A"
+        self.assertEqual(counts(score("01", t)), {"correct": 13, "miss_rows": 1, "missing_unit": 1})
+
+    def test_report_06_real_errors_still_count(self):
+        t = copy.deepcopy(labels("06"))
+        t[find(t, "Sugar")].update(test_name="Urine Sugar", value=1.0, unit="N/A")
+        t[find(t, "Leucocytes")].update(test_name="Urine Leucocytes", value=2.5)
+        s = score("06", t)
+        self.assertEqual(s["wrong_value"], 2)
+        self.assertEqual(s["correct"], 10)
+        self.assertEqual(s["critical"], 2)
+
+
 class GoldVsLabels(unittest.TestCase):
     def test_only_known_difference(self):
         diffs = {}
