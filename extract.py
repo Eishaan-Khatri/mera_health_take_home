@@ -12,6 +12,7 @@ import re
 import subprocess
 import sys
 import tempfile
+import time
 import urllib.error
 import urllib.request
 from pathlib import Path
@@ -34,6 +35,14 @@ Rules:
 """
 
 MEDIA_TYPES = {".jpg": "image/jpeg", ".jpeg": "image/jpeg", ".png": "image/png"}
+RETRY_CODES = {429, 500, 502, 503, 504}  # rate limit and server overload: worth waiting for
+BACKOFF = (5, 15, 45)  # seconds before each retry
+
+
+def retry_after(error):
+    """Seconds the server asked us to wait (Retry-After), capped at a minute; None if it didn't say."""
+    value = error.headers.get("Retry-After", "") if error.headers else ""
+    return min(int(value), 60) if value.isdigit() else None
 
 
 def load_images(path: Path) -> list[tuple[str, str]]:
@@ -67,13 +76,25 @@ def call_model(images: list[tuple[str, str]]) -> str:
         f"https://generativelanguage.googleapis.com/v1beta/models/{MODEL}:generateContent",
         data=json.dumps(body).encode(), headers={"x-goog-api-key": key, "Content-Type": "application/json"},
     )
-    try:
-        with urllib.request.urlopen(request, timeout=180) as response:
-            result = json.load(response)
-    except urllib.error.HTTPError as error:
-        raise RuntimeError(f"Gemini HTTP {error.code}; check API access, model and quota. See README.md.") from None
-    except urllib.error.URLError:
-        raise RuntimeError("Gemini connection failed; check network/TLS access and retry. See README.md.") from None
+    for attempt in range(len(BACKOFF) + 1):
+        last = attempt == len(BACKOFF)
+        try:
+            with urllib.request.urlopen(request, timeout=180) as response:
+                result = json.load(response)
+            break
+        except urllib.error.HTTPError as error:
+            if error.code not in RETRY_CODES or last:
+                raise RuntimeError(f"Gemini HTTP {error.code}; check API access, model and quota. "
+                                   "See README.md.") from None
+            reason, wait = f"http_{error.code}", retry_after(error) or BACKOFF[attempt]
+        except (urllib.error.URLError, TimeoutError, ConnectionError) as error:
+            if last:
+                raise RuntimeError("Gemini connection failed or timed out; check network/TLS access and retry. "
+                                   "See README.md.") from None
+            timed_out = isinstance(error, TimeoutError) or "timed out" in str(error)
+            reason, wait = "timeout" if timed_out else "connection", BACKOFF[attempt]
+        print("RETRY " + json.dumps({"attempt": attempt + 1, "reason": reason, "wait_s": wait}), file=sys.stderr)
+        time.sleep(wait)
     usage = result.get("usageMetadata", {})
     print("USAGE " + json.dumps({"model": MODEL, "prompt_tokens": usage.get("promptTokenCount"),
                                  "output_tokens": usage.get("candidatesTokenCount"),
@@ -85,11 +106,16 @@ def call_model(images: list[tuple[str, str]]) -> str:
 
 
 def parse(text: str) -> list[dict]:
+    """The model's 'tests' list. Raises instead of returning [], so a broken reply never looks like 'no tests'."""
     match = re.search(r"\{.*\}", text, re.DOTALL)
     try:
-        return json.loads(match.group(0))["tests"]
-    except Exception:
-        return []
+        tests = json.loads(match.group(0))["tests"]
+    except (AttributeError, ValueError, KeyError, TypeError):
+        tests = None
+    if not isinstance(tests, list):
+        raise RuntimeError(f"Model reply had no valid JSON 'tests' list; not reporting it as zero tests. "
+                           f"Reply started: {text[:200]!r}")
+    return tests
 
 
 def as_printed(value):
@@ -118,14 +144,25 @@ def value_span(value):
     return to_float(m.group(1)), to_float(m.group(2) or m.group(1))
 
 
+def as_words(text):
+    """Lower-cased words of a value or range, without a trailing unit such as '/hpf'."""
+    return " ".join(re.sub(r"\s*/\S+$", "", str(text)).lower().split())
+
+
 def compute_status(value, reference_range):
     """'low' / 'normal' / 'high' from the value and the printed range. Bounds count as normal.
-    None when there is no numeric value or range, or an interval straddles a bound (4-6 vs 0 - 5)."""
+    A word range (Negative, Nil, Absent, Pale Yellow): 'normal' if the value matches it, else 'review',
+    since code can't tell how far off 'Present (+)' or '1-2' is.
+    None when there is no value or range, or an interval straddles a bound (4-6 vs 0 - 5)."""
+    if value is None or reference_range is None:
+        return None
+    rng = str(reference_range).strip()
+    if not re.search(r"\d", rng):
+        return "normal" if as_words(value) == as_words(rng) else "review"
     span = value_span(value)
-    if span is None or reference_range is None:
+    if span is None:
         return None
     vlo, vhi = span
-    rng = str(reference_range).strip()
     m = re.match(rf"({NUMBER})\s*[-–]\s*({NUMBER})", rng)
     if m:
         lo, hi = to_float(m.group(1)), to_float(m.group(2))
