@@ -1,0 +1,38 @@
+{
+ "report": "report_05.pdf",
+ "model": "gemini-3.1-flash-lite",
+ "attempts": [
+  {
+   "n": 1,
+   "wall_s": 240.05,
+   "exit": null,
+   "error": "timeout",
+   "extractor_retries": [],
+   "stderr_tail": "runner timeout after 240s"
+  },
+  {
+   "n": 2,
+   "wall_s": 20.4,
+   "exit": 0,
+   "error": null,
+   "extractor_retries": [
+    "http_503"
+   ]
+  }
+ ],
+ "status": "ok",
+ "usage": {
+  "model": "gemini-3.1-flash-lite",
+  "prompt_tokens": 1259,
+  "output_tokens": 771,
+  "thinking_tokens": null,
+  "total_tokens": 2030
+ },
+ "wall_s": 20.4,
+ "total_wall_s": 270.49,
+ "counts_after": {
+  "minute": 1,
+  "hour": 73,
+  "day": 272
+ }
+}
