@@ -73,6 +73,11 @@ def call_model(media_type: str, data: str) -> str:
         raise RuntimeError(f"Gemini HTTP {error.code}; check API access, model and quota. See README.md.") from None
     except urllib.error.URLError:
         raise RuntimeError("Gemini connection failed; check network/TLS access and retry. See README.md.") from None
+    usage = result.get("usageMetadata", {})
+    print("USAGE " + json.dumps({"model": MODEL, "prompt_tokens": usage.get("promptTokenCount"),
+                                 "output_tokens": usage.get("candidatesTokenCount"),
+                                 "thinking_tokens": usage.get("thoughtsTokenCount"),
+                                 "total_tokens": usage.get("totalTokenCount")}), file=sys.stderr)
     candidate = result.get("candidates", [{}])[0]
     return "".join(part["text"] for part in candidate.get("content", {}).get("parts", [])
                    if "text" in part and not part.get("thought"))

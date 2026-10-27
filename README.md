@@ -67,3 +67,7 @@ What moved and why:
 - **13 renamed rows now score correct**: MCV, MCH and MCHC in reports 01 and 05; ALP, AST and ALT in 02; FBS and PPBS in 03; ESR in 06; LDL-C in 08.
 - **Real errors were hidden and are now counted**: wrong values went up from 2 to 7. In report_06, `Albumin` Negative → `0.0`, `Leucocytes` `2-3` → `2.5`, `Erythrocytes` and `Squamous Epithelial Cells` `1-2` → `1.5`, and `CRP` `< 0.5` → `0.5` were previously split into a dropped row plus an invented row. `Sugar` `Present (+)` → `1.0` and `Ketones` Negative → `0.0` were already counted and still are.
 - **Unchanged**: the 3 invented ranges (report_03) and the 24 dropped rows on report_11 page 2. These are extraction failures, not naming.
+
+## Notes for the write-up
+
+- **Diagnosis ranking (by harm):** 1. text/interval/`<` values forced into numbers, 2. invented reference ranges, 3. pages after the first silently dropped. **Caveat for #3:** the output looks complete, so a doctor would assume the page-2 tests were never done. Being silent puts it close to the top, even though it's a missing row rather than a wrong number.
